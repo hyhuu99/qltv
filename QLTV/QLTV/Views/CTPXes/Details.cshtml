@@ -1,0 +1,50 @@
+﻿@model QLTV.Models.CTPX
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CTPX</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONGN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONGN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHIEUXUATSACH.MADL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHIEUXUATSACH.MADL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SACH.MANXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SACH.MANXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

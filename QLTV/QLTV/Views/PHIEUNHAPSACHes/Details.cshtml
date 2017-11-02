@@ -1,0 +1,85 @@
+﻿@model QLTV.Models.PHIEUNHAPSACH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Phiếu nhập sách</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Người giao sách")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOIGS)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ngày nhập")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYNHAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Thành tiền")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THANHTIEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Tên nhà xuất bản")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB.TENNXB)
+        </dd>
+
+    </dl>
+</div>
+<table class="table" id="chitiet">
+    <tr>
+        <td>Tên sách</td>
+        <td>Số lượng</td>
+        <td>Tổng tiền</td>
+        <td></td>
+    </tr>
+    @if (Model.CTPNS != null)
+    {
+        foreach (var item in Model.CTPNS)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SACH.TENS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SOLUONGN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TONG)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MAPNS })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            Không có chi tiết
+        </tr>
+    }
+</table>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MAPNS }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

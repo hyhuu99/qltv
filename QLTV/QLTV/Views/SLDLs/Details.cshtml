@@ -1,0 +1,42 @@
+﻿@model QLTV.Models.SLDL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SLDL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SLTON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLTON)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAILY.TENDL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SACH.MANXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SACH.MANXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

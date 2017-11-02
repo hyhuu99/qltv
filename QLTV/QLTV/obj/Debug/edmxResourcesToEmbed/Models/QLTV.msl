@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLTVModelStoreContainer" CdmEntityContainer="QLTVEntities">
+    <EntitySetMapping Name="CTPNS">
+      <EntityTypeMapping TypeName="QLTVModel.CTPN">
+        <MappingFragment StoreEntitySet="CTPNS">
+          <ScalarProperty Name="TONG" ColumnName="TONG" />
+          <ScalarProperty Name="SOLUONGN" ColumnName="SOLUONGN" />
+          <ScalarProperty Name="MAS" ColumnName="MAS" />
+          <ScalarProperty Name="MAPNS" ColumnName="MAPNS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTPXS">
+      <EntityTypeMapping TypeName="QLTVModel.CTPX">
+        <MappingFragment StoreEntitySet="CTPXS">
+          <ScalarProperty Name="TONG" ColumnName="TONG" />
+          <ScalarProperty Name="SOLUONGN" ColumnName="SOLUONGN" />
+          <ScalarProperty Name="MAS" ColumnName="MAS" />
+          <ScalarProperty Name="MAPXS" ColumnName="MAPXS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DAILies">
+      <EntityTypeMapping TypeName="QLTVModel.DAILY">
+        <MappingFragment StoreEntitySet="DAILY">
+          <ScalarProperty Name="SOTIENNO" ColumnName="SOTIENNO" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="TENDL" ColumnName="TENDL" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOANHTHUs">
+      <EntityTypeMapping TypeName="QLTVModel.DOANHTHU">
+        <MappingFragment StoreEntitySet="DOANHTHU">
+          <ScalarProperty Name="DOANHTHU1" ColumnName="DOANHTHU" />
+          <ScalarProperty Name="SOTIENNXB" ColumnName="SOTIENNXB" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MATK" ColumnName="MATK" />
+          <ScalarProperty Name="MADT" ColumnName="MADT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NXBs">
+      <EntityTypeMapping TypeName="QLTVModel.NXB">
+        <MappingFragment StoreEntitySet="NXB">
+          <ScalarProperty Name="STK" ColumnName="STK" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="TENNXB" ColumnName="TENNXB" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUNHAPSACHes">
+      <EntityTypeMapping TypeName="QLTVModel.PHIEUNHAPSACH">
+        <MappingFragment StoreEntitySet="PHIEUNHAPSACH">
+          <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+          <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
+          <ScalarProperty Name="NGUOIGS" ColumnName="NGUOIGS" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="MAPNS" ColumnName="MAPNS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUTRATIENs">
+      <EntityTypeMapping TypeName="QLTVModel.PHIEUTRATIEN">
+        <MappingFragment StoreEntitySet="PHIEUTRATIEN">
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="SOTIENNO" ColumnName="SOTIENNO" />
+          <ScalarProperty Name="SOTIENTRA" ColumnName="SOTIENTRA" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+          <ScalarProperty Name="MAPXS" ColumnName="MAPXS" />
+          <ScalarProperty Name="MATK" ColumnName="MATK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUXUATSACHes">
+      <EntityTypeMapping TypeName="QLTVModel.PHIEUXUATSACH">
+        <MappingFragment StoreEntitySet="PHIEUXUATSACH">
+          <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+          <ScalarProperty Name="NGAYXUAT" ColumnName="NGAYXUAT" />
+          <ScalarProperty Name="NGUOINS" ColumnName="NGUOINS" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+          <ScalarProperty Name="MAPXS" ColumnName="MAPXS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SACHes">
+      <EntityTypeMapping TypeName="QLTVModel.SACH">
+        <MappingFragment StoreEntitySet="SACH">
+          <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+          <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="LOAI" ColumnName="LOAI" />
+          <ScalarProperty Name="TENTG" ColumnName="TENTG" />
+          <ScalarProperty Name="TENS" ColumnName="TENS" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="MAS" ColumnName="MAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SLDLs">
+      <EntityTypeMapping TypeName="QLTVModel.SLDL">
+        <MappingFragment StoreEntitySet="SLDL">
+          <ScalarProperty Name="SLTON" ColumnName="SLTON" />
+          <ScalarProperty Name="MAS" ColumnName="MAS" />
+          <ScalarProperty Name="MADL" ColumnName="MADL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLTVModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TKTKs">
+      <EntityTypeMapping TypeName="QLTVModel.TKTK">
+        <MappingFragment StoreEntitySet="TKTK">
+          <ScalarProperty Name="MAS" ColumnName="MAS" />
+          <ScalarProperty Name="SLTON" ColumnName="SLTON" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MAKHO" ColumnName="MAKHO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

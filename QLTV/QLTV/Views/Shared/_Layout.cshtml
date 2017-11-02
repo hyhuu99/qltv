@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav">
+                    <li style="padding-right:10px">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top:7%">
+                            Thống kê
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/NXBs/index">Thống kê tồn kho</a></li>
+                            <li><a href="~/nhaxuatban/nxb">Thống kê doanh thu</a></li>
+                            <li><a href="#">Trả tiền cho nxb</a></li>
+                        </ul>
+                      </li>
+                    <li>                       
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top:5%">
+                         Nhà xuất bản
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/NXBs/index">Quản lý nxb</a></li>
+                        <li><a href="~/PHIEUNHAPSACHes/index">Nhập sách</a></li>
+                        <li><a href="#">Công nợ</a></li>                       
+                    </ul>
+                   </li>
+                    <li style="padding-left:10px">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style=" margin-top:8%">
+                            Đại lý
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/PHIEUXUATSACHes/index">Xuất sách</a></li>                            
+                            <li><a href="~/PHIEUTRATIENs/index">Lập phiếu trả tiền</a></li>
+                            <li><a href="#">Công nợ</a></li>
+                        </ul>
+                    </li>
+        </ul>
+        @Html.Partial("_LoginPartial")
+    </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

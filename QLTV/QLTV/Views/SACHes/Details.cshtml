@@ -1,0 +1,74 @@
+﻿@model QLTV.Models.SACH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TENTG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENTG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIANHAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIANHAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIABAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIABAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NXB.TENNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB.TENNXB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

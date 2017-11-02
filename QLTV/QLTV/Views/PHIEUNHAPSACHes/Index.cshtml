@@ -1,0 +1,51 @@
+﻿@model IEnumerable<QLTV.Models.PHIEUNHAPSACH>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Người viết phiếu")
+        </th>
+        <th>
+            @Html.DisplayName("Ngày nhập")
+        </th>
+        <th>
+            @Html.DisplayName("Tổng tiền")
+        </th>
+        <th>
+            @Html.DisplayName("Tên nhà xuất bản")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGUOIGS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYNHAP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THANHTIEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NXB.TENNXB)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MAPNS }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MAPNS }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MAPNS })
+        </td>
+    </tr>
+}
+
+</table>

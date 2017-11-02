@@ -1,0 +1,50 @@
+﻿@model QLTV.Models.DOANHTHU
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DOANHTHU</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOTIENNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOTIENNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOANHTHU1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOANHTHU1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHIEUTRATIEN.MADL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHIEUTRATIEN.MADL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MADT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

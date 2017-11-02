@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CTPNS">
+    <Key>
+      <PropertyRef Name="MAPNS" />
+      <PropertyRef Name="MAS" />
+    </Key>
+    <Property Name="MAPNS" Type="int" Nullable="false" />
+    <Property Name="MAS" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="SOLUONGN" Type="int" Nullable="false" />
+    <Property Name="TONG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CTPXS">
+    <Key>
+      <PropertyRef Name="MAPXS" />
+      <PropertyRef Name="MAS" />
+    </Key>
+    <Property Name="MAPXS" Type="int" Nullable="false" />
+    <Property Name="MAS" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="SOLUONGN" Type="int" Nullable="false" />
+    <Property Name="TONG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DAILY">
+    <Key>
+      <PropertyRef Name="MADL" />
+    </Key>
+    <Property Name="MADL" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TENDL" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SDT" Type="int" Nullable="false" />
+    <Property Name="SOTIENNO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DOANHTHU">
+    <Key>
+      <PropertyRef Name="MADT" />
+    </Key>
+    <Property Name="MADT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MATK" Type="int" Nullable="false" />
+    <Property Name="NGAY" Type="datetime" Nullable="false" />
+    <Property Name="SOTIENNXB" Type="int" Nullable="false" />
+    <Property Name="DOANHTHU" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NXB">
+    <Key>
+      <PropertyRef Name="MANXB" />
+    </Key>
+    <Property Name="MANXB" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TENNXB" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SDT" Type="int" Nullable="false" />
+    <Property Name="STK" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAPSACH">
+    <Key>
+      <PropertyRef Name="MAPNS" />
+    </Key>
+    <Property Name="MAPNS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MANXB" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NGUOIGS" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="datetime" Nullable="false" />
+    <Property Name="THANHTIEN" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHIEUTRATIEN">
+    <Key>
+      <PropertyRef Name="MATK" />
+    </Key>
+    <Property Name="MATK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAPXS" Type="int" Nullable="false" />
+    <Property Name="MADL" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NGAY" Type="datetime" Nullable="false" />
+    <Property Name="SOTIENTRA" Type="int" Nullable="false" />
+    <Property Name="SOTIENNO" Type="int" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHIEUXUATSACH">
+    <Key>
+      <PropertyRef Name="MAPXS" />
+    </Key>
+    <Property Name="MAPXS" Type="int" Nullable="false" />
+    <Property Name="MADL" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NGUOINS" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NGAYXUAT" Type="datetime" Nullable="false" />
+    <Property Name="THANHTIEN" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SACH">
+    <Key>
+      <PropertyRef Name="MAS" />
+    </Key>
+    <Property Name="MAS" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MANXB" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TENS" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="TENTG" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LOAI" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="GIANHAP" Type="int" Nullable="false" />
+    <Property Name="GIABAN" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SLDL">
+    <Key>
+      <PropertyRef Name="MADL" />
+      <PropertyRef Name="MAS" />
+    </Key>
+    <Property Name="MADL" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MAS" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="SLTON" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TKTK">
+    <Key>
+      <PropertyRef Name="MAKHO" />
+    </Key>
+    <Property Name="MAKHO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NGAY" Type="datetime" Nullable="false" />
+    <Property Name="SLTON" Type="int" Nullable="false" />
+    <Property Name="MAS" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__CTPNS__MAPNS__25869641">
+    <End Role="PHIEUNHAPSACH" Type="Self.PHIEUNHAPSACH" Multiplicity="1" />
+    <End Role="CTPNS" Type="Self.CTPNS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUNHAPSACH">
+        <PropertyRef Name="MAPNS" />
+      </Principal>
+      <Dependent Role="CTPNS">
+        <PropertyRef Name="MAPNS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPNS__MAS__267ABA7A">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+    <End Role="CTPNS" Type="Self.CTPNS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MAS" />
+      </Principal>
+      <Dependent Role="CTPNS">
+        <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPXS__MAPXS__286302EC">
+    <End Role="PHIEUXUATSACH" Type="Self.PHIEUXUATSACH" Multiplicity="1" />
+    <End Role="CTPXS" Type="Self.CTPXS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUXUATSACH">
+        <PropertyRef Name="MAPXS" />
+      </Principal>
+      <Dependent Role="CTPXS">
+        <PropertyRef Name="MAPXS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPXS__MAS__29572725">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+    <End Role="CTPXS" Type="Self.CTPXS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MAS" />
+      </Principal>
+      <Dependent Role="CTPXS">
+        <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DOANHTHU__MATK__2E1BDC42">
+    <End Role="PHIEUTRATIEN" Type="Self.PHIEUTRATIEN" Multiplicity="1" />
+    <End Role="DOANHTHU" Type="Self.DOANHTHU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUTRATIEN">
+        <PropertyRef Name="MATK" />
+      </Principal>
+      <Dependent Role="DOANHTHU">
+        <PropertyRef Name="MATK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUNHAP__MANXB__24927208">
+    <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+    <End Role="PHIEUNHAPSACH" Type="Self.PHIEUNHAPSACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="MANXB" />
+      </Principal>
+      <Dependent Role="PHIEUNHAPSACH">
+        <PropertyRef Name="MANXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTRAT__MAPXS__2A4B4B5E">
+    <End Role="PHIEUXUATSACH" Type="Self.PHIEUXUATSACH" Multiplicity="1" />
+    <End Role="PHIEUTRATIEN" Type="Self.PHIEUTRATIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUXUATSACH">
+        <PropertyRef Name="MAPXS" />
+      </Principal>
+      <Dependent Role="PHIEUTRATIEN">
+        <PropertyRef Name="MAPXS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTRATI__MADL__2B3F6F97">
+    <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
+    <End Role="PHIEUTRATIEN" Type="Self.PHIEUTRATIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAILY">
+        <PropertyRef Name="MADL" />
+      </Principal>
+      <Dependent Role="PHIEUTRATIEN">
+        <PropertyRef Name="MADL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUXUATS__MADL__276EDEB3">
+    <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
+    <End Role="PHIEUXUATSACH" Type="Self.PHIEUXUATSACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAILY">
+        <PropertyRef Name="MADL" />
+      </Principal>
+      <Dependent Role="PHIEUXUATSACH">
+        <PropertyRef Name="MADL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SACH__MANXB__239E4DCF">
+    <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="MANXB" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MANXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SLDL__MADL__2C3393D0">
+    <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
+    <End Role="SLDL" Type="Self.SLDL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAILY">
+        <PropertyRef Name="MADL" />
+      </Principal>
+      <Dependent Role="SLDL">
+        <PropertyRef Name="MADL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SLDL__MAS__2D27B809">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+    <End Role="SLDL" Type="Self.SLDL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MAS" />
+      </Principal>
+      <Dependent Role="SLDL">
+        <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TKTK__MAS__47DBAE45">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
+    <End Role="TKTK" Type="Self.TKTK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MAS" />
+      </Principal>
+      <Dependent Role="TKTK">
+        <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLTVModelStoreContainer">
+    <EntitySet Name="CTPNS" EntityType="Self.CTPNS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTPXS" EntityType="Self.CTPXS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DAILY" EntityType="Self.DAILY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOANHTHU" EntityType="Self.DOANHTHU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NXB" EntityType="Self.NXB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUNHAPSACH" EntityType="Self.PHIEUNHAPSACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUTRATIEN" EntityType="Self.PHIEUTRATIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUXUATSACH" EntityType="Self.PHIEUXUATSACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SLDL" EntityType="Self.SLDL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TKTK" EntityType="Self.TKTK" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CTPNS__MAPNS__25869641" Association="Self.FK__CTPNS__MAPNS__25869641">
+      <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACH" />
+      <End Role="CTPNS" EntitySet="CTPNS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPNS__MAS__267ABA7A" Association="Self.FK__CTPNS__MAS__267ABA7A">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="CTPNS" EntitySet="CTPNS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPXS__MAPXS__286302EC" Association="Self.FK__CTPXS__MAPXS__286302EC">
+      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACH" />
+      <End Role="CTPXS" EntitySet="CTPXS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPXS__MAS__29572725" Association="Self.FK__CTPXS__MAS__29572725">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="CTPXS" EntitySet="CTPXS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DOANHTHU__MATK__2E1BDC42" Association="Self.FK__DOANHTHU__MATK__2E1BDC42">
+      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIEN" />
+      <End Role="DOANHTHU" EntitySet="DOANHTHU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUNHAP__MANXB__24927208" Association="Self.FK__PHIEUNHAP__MANXB__24927208">
+      <End Role="NXB" EntitySet="NXB" />
+      <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTRAT__MAPXS__2A4B4B5E" Association="Self.FK__PHIEUTRAT__MAPXS__2A4B4B5E">
+      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACH" />
+      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTRATI__MADL__2B3F6F97" Association="Self.FK__PHIEUTRATI__MADL__2B3F6F97">
+      <End Role="DAILY" EntitySet="DAILY" />
+      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUXUATS__MADL__276EDEB3" Association="Self.FK__PHIEUXUATS__MADL__276EDEB3">
+      <End Role="DAILY" EntitySet="DAILY" />
+      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SACH__MANXB__239E4DCF" Association="Self.FK__SACH__MANXB__239E4DCF">
+      <End Role="NXB" EntitySet="NXB" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SLDL__MADL__2C3393D0" Association="Self.FK__SLDL__MADL__2C3393D0">
+      <End Role="DAILY" EntitySet="DAILY" />
+      <End Role="SLDL" EntitySet="SLDL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SLDL__MAS__2D27B809" Association="Self.FK__SLDL__MAS__2D27B809">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="SLDL" EntitySet="SLDL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TKTK__MAS__47DBAE45" Association="Self.FK__TKTK__MAS__47DBAE45">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="TKTK" EntitySet="TKTK" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

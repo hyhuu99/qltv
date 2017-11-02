@@ -1,0 +1,50 @@
+﻿@model QLTV.Models.PHIEUXUATSACH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PHIEUXUATSACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOINS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOINS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYXUAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYXUAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THANHTIEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THANHTIEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAILY.TENDL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAPXS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,56 @@
+﻿@model QLTV.Models.CTPN
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CTPN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONGN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONGN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHIEUNHAPSACH.MANXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHIEUNHAPSACH.MANXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SACH.MANXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SACH.MANXB)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
