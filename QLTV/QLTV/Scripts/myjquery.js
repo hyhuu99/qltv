@@ -26,7 +26,7 @@ $("#chitiet").on('click', '.btn.btn-danger.btnDelete', function () {
 });
 
 $(function () { // will trigger when the document is ready
-    $('.datepicker').datepicker({ dateFormat: 'mm-dd-yy' }); //Initialise any date pickers
+    $('.datepicker').datepicker({ dateFormat: 'mm-dd-yy' , minDate:-15, maxDate: +15}); //Initialise any date pickers
 });
 
 

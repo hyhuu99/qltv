@@ -30,20 +30,21 @@ namespace QLTV.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PHIEUNHAPSACH phieunhap = db.PHIEUNHAPSACHes.Find(id);
-            List<CTPN> ctpn = new List<CTPN>();
-            var query = (from u in db.CTPNS
-                        where u.MAPNS==id
-                        select u).Include(s => s.SACH);
-            foreach (var row in query)
-            {
-                CTPN pn = new CTPN();
-                pn.MAPNS = row.MAPNS;
-                pn.MAS = row.MAS;
-                pn.SOLUONGN = row.SOLUONGN;
-                pn.TONG = row.TONG;
-                ctpn.Add(pn);
-            }
-            phieunhap.CTPNS = ctpn;  
+            phieunhap.CTPNS = db.CTPNS.Include(s => s.SACH).Where(o => o.MAPNS == id).ToList();
+            //List<CTPN> ctpn = new List<CTPN>();
+            //var query = (from u in db.CTPNS
+            //            where u.MAPNS==id
+            //            select u).Include(s => s.SACH);
+            //foreach (var row in query)
+            //{
+            //    CTPN pn = new CTPN();
+            //    pn.MAPNS = row.MAPNS;
+            //    pn.MAS = row.MAS;
+            //    pn.SOLUONGN = row.SOLUONGN;
+            //    pn.TONG = row.TONG;
+            //    ctpn.Add(pn);
+            //}
+            //phieunhap.CTPNS = ctpn;  
             if (phieunhap == null)
             {
                 return HttpNotFound();

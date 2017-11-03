@@ -18,7 +18,6 @@ namespace QLTV.Models
         public PHIEUXUATSACH()
         {
             this.CTPXS = new HashSet<CTPX>();
-            this.PHIEUTRATIENs = new HashSet<PHIEUTRATIEN>();
         }
     
         public int MAPXS { get; set; }
@@ -30,7 +29,5 @@ namespace QLTV.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPX> CTPXS { get; set; }
         public virtual DAILY DAILY { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUTRATIEN> PHIEUTRATIENs { get; set; }
     }
 }

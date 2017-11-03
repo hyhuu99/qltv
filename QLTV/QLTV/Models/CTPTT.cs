@@ -12,12 +12,14 @@ namespace QLTV.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class CTPTT
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int MATK { get; set; }
+        public string MAS { get; set; }
+        public int SOLUONGN { get; set; }
+        public int TONG { get; set; }
+    
+        public virtual SACH SACH { get; set; }
+        public virtual PHIEUTRATIEN PHIEUTRATIEN { get; set; }
     }
 }

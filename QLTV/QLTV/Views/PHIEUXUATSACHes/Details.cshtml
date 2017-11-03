@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NGUOINS)
+            @Html.DisplayName("Người lập phiếu")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NGAYXUAT)
+            @Html.DisplayName("Ngày xuất")
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.THANHTIEN)
+            @Html.DisplayName("Tổng tiền")
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
+            @Html.DisplayName("Đại lý")
         </dt>
 
         <dd>
@@ -44,6 +44,40 @@
 
     </dl>
 </div>
+<table class="table" id="chitiet">
+    <tr>
+        <td>Tên sách</td>
+        <td>Số lượng</td>
+        <td>Tổng tiền</td>
+        <td></td>
+    </tr>
+    @if (Model.CTPXS != null)
+    {
+        foreach (var item in Model.CTPXS)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SACH.TENS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SOLUONGN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TONG)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MAPXS })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            Không có chi tiết
+        </tr>
+    }
+</table>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.MAPXS }) |
     @Html.ActionLink("Back to List", "Index")

@@ -21,6 +21,7 @@ namespace QLTV.Models
             this.CTPXS = new HashSet<CTPX>();
             this.SLDLs = new HashSet<SLDL>();
             this.TKTKs = new HashSet<TKTK>();
+            this.CTPTTs = new HashSet<CTPTT>();
         }
     
         public string MAS { get; set; }
@@ -41,5 +42,7 @@ namespace QLTV.Models
         public virtual ICollection<SLDL> SLDLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TKTK> TKTKs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTPTT> CTPTTs { get; set; }
     }
 }

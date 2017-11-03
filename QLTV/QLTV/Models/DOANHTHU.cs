@@ -15,11 +15,7 @@ namespace QLTV.Models
     public partial class DOANHTHU
     {
         public int MADT { get; set; }
-        public int MATK { get; set; }
         public System.DateTime NGAY { get; set; }
         public int SOTIENNXB { get; set; }
-        public int DOANHTHU1 { get; set; }
-    
-        public virtual PHIEUTRATIEN PHIEUTRATIEN { get; set; }
     }
 }

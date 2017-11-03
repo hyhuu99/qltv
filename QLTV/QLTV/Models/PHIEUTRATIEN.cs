@@ -17,20 +17,17 @@ namespace QLTV.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUTRATIEN()
         {
-            this.DOANHTHUs = new HashSet<DOANHTHU>();
+            this.CTPTTs = new HashSet<CTPTT>();
         }
     
         public int MATK { get; set; }
-        public int MAPXS { get; set; }
         public string MADL { get; set; }
         public System.DateTime NGAY { get; set; }
-        public int SOTIENTRA { get; set; }
         public int SOTIENNO { get; set; }
-        public string TRANGTHAI { get; set; }
+        public Nullable<int> TRANGTHAI { get; set; }
     
         public virtual DAILY DAILY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DOANHTHU> DOANHTHUs { get; set; }
-        public virtual PHIEUXUATSACH PHIEUXUATSACH { get; set; }
+        public virtual ICollection<CTPTT> CTPTTs { get; set; }
     }
 }

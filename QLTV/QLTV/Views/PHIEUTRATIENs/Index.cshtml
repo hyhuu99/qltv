@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<QLTV.Models.PHIEUTRATIEN>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Số sách bán được";
 }
 
 <h2>Index</h2>
@@ -12,22 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NGAY)
+            @Html.DisplayName("Ngày")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SOTIENTRA)
+            @Html.DisplayName("Số tiền")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SOTIENNO)
+            @Html.DisplayName("Trạng thái")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TRANGTHAI)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DAILY.TENDL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PHIEUXUATSACH.MADL)
+            @Html.DisplayName("Tên đại lý")
         </th>
         <th></th>
     </tr>
@@ -38,24 +32,25 @@
             @Html.DisplayFor(modelItem => item.NGAY)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SOTIENTRA)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.SOTIENNO)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TRANGTHAI)
+            @if (item.TRANGTHAI == 0)
+            {
+                @Html.DisplayName("Chưa thanh toán")
+            }
+            else
+            {
+            @Html.DisplayName("Đã thanh toán")
+            }           
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DAILY.TENDL)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PHIEUXUATSACH.MADL)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.MATK }) |
             @Html.ActionLink("Details", "Details", new { id=item.MATK }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MATK })
+            @Html.ActionLink("Thanh toán", "thanhtoan", new { id = item.MATK }) 
         </td>
     </tr>
 }

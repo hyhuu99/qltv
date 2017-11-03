@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QLTV.Models;
+using System.Diagnostics;
 
 namespace QLTV.Controllers
 {
@@ -17,7 +18,7 @@ namespace QLTV.Controllers
         // GET: PHIEUTRATIENs
         public ActionResult Index()
         {
-            var pHIEUTRATIENs = db.PHIEUTRATIENs.Include(p => p.DAILY).Include(p => p.PHIEUXUATSACH);
+            var pHIEUTRATIENs = db.PHIEUTRATIENs.Include(p => p.DAILY);
             return View(pHIEUTRATIENs.ToList());
         }
 
@@ -28,39 +29,68 @@ namespace QLTV.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUTRATIEN pHIEUTRATIEN = db.PHIEUTRATIENs.Find(id);
-            if (pHIEUTRATIEN == null)
+            PHIEUTRATIEN ptt = db.PHIEUTRATIENs.Find(id);
+            ptt.CTPTTs = db.CTPTTs.Include(s => s.SACH).Where(o => o.MATK == id).ToList();
+            if (ptt == null)
             {
                 return HttpNotFound();
             }
-            return View(pHIEUTRATIEN);
+            return View(ptt);
         }
 
         // GET: PHIEUTRATIENs/Create
         public ActionResult Create()
         {
             ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL");
-            ViewBag.MAPXS = new SelectList(db.PHIEUXUATSACHes, "MAPXS", "MADL");
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
             return View();
         }
+
 
         // POST: PHIEUTRATIENs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MATK,MAPXS,MADL,NGAY,SOTIENTRA,SOTIENNO,TRANGTHAI")] PHIEUTRATIEN pHIEUTRATIEN)
+        public ActionResult Create([Bind(Prefix = "phieutratiens")] PHIEUTRATIEN ptt,
+                                    [Bind(Prefix = "ct")] CTPTT[] ctptt)
         {
             if (ModelState.IsValid)
             {
-                db.PHIEUTRATIENs.Add(pHIEUTRATIEN);
+                int maptt = 1;
+                if (db.PHIEUTRATIENs.Any())
+                    maptt = db.PHIEUTRATIENs.Max(o => o.MATK) + 1;
+                Debug.WriteLine(ctptt.Length);
+                foreach(CTPTT ct in ctptt)
+                {
+                    ct.MATK = maptt;
+                    SLDL sl = db.SLDLs.FirstOrDefault(o => o.MADL == ptt.MADL && o.MAS == ct.MAS);
+                    SACH s = new SACH();
+                    s = db.SACHes.Find(ct.MAS);
+                    if (sl!=null && sl.SLTON>0)
+                    {
+                        sl.SLTON = sl.SLTON - ct.SOLUONGN;
+                        db.Entry(sl).State = EntityState.Modified;
+                        ct.TONG = ct.SOLUONGN * s.GIABAN;
+                        ptt.SOTIENNO += ct.TONG;
+                    }
+                    else
+                    {
+                        ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL");
+                        ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                        ModelState.AddModelError("", "số sách đã bán lớn hơn số sách xuất cho đại lý");
+                        return View();
+                    }
+                }
+                ptt.CTPTTs = ctptt;
+                ptt.TRANGTHAI = 0;
+                db.PHIEUTRATIENs.Add(ptt);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUTRATIEN.MADL);
-            ViewBag.MAPXS = new SelectList(db.PHIEUXUATSACHes, "MAPXS", "MADL", pHIEUTRATIEN.MAPXS);
-            return View(pHIEUTRATIEN);
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", ptt.MADL);
+            return View(ptt);
         }
 
         // GET: PHIEUTRATIENs/Edit/5
@@ -76,7 +106,6 @@ namespace QLTV.Controllers
                 return HttpNotFound();
             }
             ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUTRATIEN.MADL);
-            ViewBag.MAPXS = new SelectList(db.PHIEUXUATSACHes, "MAPXS", "MADL", pHIEUTRATIEN.MAPXS);
             return View(pHIEUTRATIEN);
         }
 
@@ -94,7 +123,6 @@ namespace QLTV.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUTRATIEN.MADL);
-            ViewBag.MAPXS = new SelectList(db.PHIEUXUATSACHes, "MAPXS", "MADL", pHIEUTRATIEN.MAPXS);
             return View(pHIEUTRATIEN);
         }
 

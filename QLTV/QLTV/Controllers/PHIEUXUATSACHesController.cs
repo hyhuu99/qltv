@@ -29,12 +29,13 @@ namespace QLTV.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUATSACH pHIEUXUATSACH = db.PHIEUXUATSACHes.Find(id);
-            if (pHIEUXUATSACH == null)
+            PHIEUXUATSACH phieuxuat= db.PHIEUXUATSACHes.Find(id);
+            phieuxuat.CTPXS = db.CTPXS.Include(s => s.SACH).Where(o => o.MAPXS == id).ToList();
+            if (phieuxuat == null)
             {
                 return HttpNotFound();
             }
-            return View(pHIEUXUATSACH);
+            return View(phieuxuat);
         }
 
         // GET: PHIEUXUATSACHes/Create
@@ -76,6 +77,7 @@ namespace QLTV.Controllers
                         sl.MADL = phieuxuats.MADL;
                         sl.SLTON += ct.SOLUONGN;
                         db.SLDLs.Add(sl);
+                        dl.SOTIENNO += phieuxuats.THANHTIEN;
                     }
                     else
                     {
@@ -85,7 +87,6 @@ namespace QLTV.Controllers
                         return View(phieuxuats);
                     }
                 }
-                dl.SOTIENNO += phieuxuats.THANHTIEN;
                 phieuxuats.CTPXS = ctpx;
                 db.PHIEUXUATSACHes.Add(phieuxuats);              
                 db.SaveChanges();

@@ -15,9 +15,9 @@ namespace QLTV.Models
     public partial class TKTK
     {
         public int MAKHO { get; set; }
+        public string MAS { get; set; }
         public System.DateTime NGAY { get; set; }
         public int SLTON { get; set; }
-        public string MAS { get; set; }
     
         public virtual SACH SACH { get; set; }
     }

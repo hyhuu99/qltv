@@ -4,66 +4,66 @@
     <EntitySet Name="CTPNS" EntityType="QLTVModel.CTPN" />
     <EntitySet Name="CTPXS" EntityType="QLTVModel.CTPX" />
     <EntitySet Name="DAILies" EntityType="QLTVModel.DAILY" />
-    <EntitySet Name="DOANHTHUs" EntityType="QLTVModel.DOANHTHU" />
     <EntitySet Name="NXBs" EntityType="QLTVModel.NXB" />
     <EntitySet Name="PHIEUNHAPSACHes" EntityType="QLTVModel.PHIEUNHAPSACH" />
     <EntitySet Name="PHIEUTRATIENs" EntityType="QLTVModel.PHIEUTRATIEN" />
     <EntitySet Name="PHIEUXUATSACHes" EntityType="QLTVModel.PHIEUXUATSACH" />
     <EntitySet Name="SACHes" EntityType="QLTVModel.SACH" />
     <EntitySet Name="SLDLs" EntityType="QLTVModel.SLDL" />
-    <AssociationSet Name="FK__CTPNS__MAPNS__25869641" Association="QLTVModel.FK__CTPNS__MAPNS__25869641">
-      <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACHes" />
-      <End Role="CTPN" EntitySet="CTPNS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CTPNS__MAS__267ABA7A" Association="QLTVModel.FK__CTPNS__MAS__267ABA7A">
-      <End Role="SACH" EntitySet="SACHes" />
-      <End Role="CTPN" EntitySet="CTPNS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CTPXS__MAPXS__286302EC" Association="QLTVModel.FK__CTPXS__MAPXS__286302EC">
-      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACHes" />
-      <End Role="CTPX" EntitySet="CTPXS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__CTPXS__MAS__29572725" Association="QLTVModel.FK__CTPXS__MAS__29572725">
-      <End Role="SACH" EntitySet="SACHes" />
-      <End Role="CTPX" EntitySet="CTPXS" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTRATI__MADL__2B3F6F97" Association="QLTVModel.FK__PHIEUTRATI__MADL__2B3F6F97">
-      <End Role="DAILY" EntitySet="DAILies" />
-      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PHIEUXUATS__MADL__276EDEB3" Association="QLTVModel.FK__PHIEUXUATS__MADL__276EDEB3">
-      <End Role="DAILY" EntitySet="DAILies" />
-      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACHes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SLDL__MADL__2C3393D0" Association="QLTVModel.FK__SLDL__MADL__2C3393D0">
-      <End Role="DAILY" EntitySet="DAILies" />
-      <End Role="SLDL" EntitySet="SLDLs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__DOANHTHU__MATK__2E1BDC42" Association="QLTVModel.FK__DOANHTHU__MATK__2E1BDC42">
-      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
-      <End Role="DOANHTHU" EntitySet="DOANHTHUs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PHIEUNHAP__MANXB__24927208" Association="QLTVModel.FK__PHIEUNHAP__MANXB__24927208">
-      <End Role="NXB" EntitySet="NXBs" />
-      <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACHes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SACH__MANXB__239E4DCF" Association="QLTVModel.FK__SACH__MANXB__239E4DCF">
-      <End Role="NXB" EntitySet="NXBs" />
-      <End Role="SACH" EntitySet="SACHes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTRAT__MAPXS__2A4B4B5E" Association="QLTVModel.FK__PHIEUTRAT__MAPXS__2A4B4B5E">
-      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACHes" />
-      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SLDL__MAS__2D27B809" Association="QLTVModel.FK__SLDL__MAS__2D27B809">
-      <End Role="SACH" EntitySet="SACHes" />
-      <End Role="SLDL" EntitySet="SLDLs" />
-    </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="QLTVModel.sysdiagram" />
     <EntitySet Name="TKTKs" EntityType="QLTVModel.TKTK" />
-    <AssociationSet Name="FK__TKTK__MAS__47DBAE45" Association="QLTVModel.FK__TKTK__MAS__47DBAE45">
+    <AssociationSet Name="FK__CTPNS__MAPNS__276EDEB3" Association="QLTVModel.FK__CTPNS__MAPNS__276EDEB3">
+      <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACHes" />
+      <End Role="CTPN" EntitySet="CTPNS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPNS__MAS__286302EC" Association="QLTVModel.FK__CTPNS__MAS__286302EC">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="CTPN" EntitySet="CTPNS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPXS__MAPXS__2A4B4B5E" Association="QLTVModel.FK__CTPXS__MAPXS__2A4B4B5E">
+      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACHes" />
+      <End Role="CTPX" EntitySet="CTPXS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPXS__MAS__2B3F6F97" Association="QLTVModel.FK__CTPXS__MAS__2B3F6F97">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="CTPX" EntitySet="CTPXS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTRATI__MADL__2C3393D0" Association="QLTVModel.FK__PHIEUTRATI__MADL__2C3393D0">
+      <End Role="DAILY" EntitySet="DAILies" />
+      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUXUATS__MADL__29572725" Association="QLTVModel.FK__PHIEUXUATS__MADL__29572725">
+      <End Role="DAILY" EntitySet="DAILies" />
+      <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SLDL__MADL__2E1BDC42" Association="QLTVModel.FK__SLDL__MADL__2E1BDC42">
+      <End Role="DAILY" EntitySet="DAILies" />
+      <End Role="SLDL" EntitySet="SLDLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUNHAP__MANXB__267ABA7A" Association="QLTVModel.FK__PHIEUNHAP__MANXB__267ABA7A">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SACH__MANXB__25869641" Association="QLTVModel.FK__SACH__MANXB__25869641">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="SACH" EntitySet="SACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SLDL__MAS__2F10007B" Association="QLTVModel.FK__SLDL__MAS__2F10007B">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="SLDL" EntitySet="SLDLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TKTK__MAS__30F848ED" Association="QLTVModel.FK__TKTK__MAS__30F848ED">
       <End Role="SACH" EntitySet="SACHes" />
       <End Role="TKTK" EntitySet="TKTKs" />
+    </AssociationSet>
+    <EntitySet Name="DOANHTHUs" EntityType="QLTVModel.DOANHTHU" />
+    <EntitySet Name="CTPTTs" EntityType="QLTVModel.CTPTT" />
+    <AssociationSet Name="FK__CTPTT__MAS__3E52440B" Association="QLTVModel.FK__CTPTT__MAS__3E52440B">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="CTPTT" EntitySet="CTPTTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTPTT__MATK__403A8C7D" Association="QLTVModel.FK__CTPTT__MATK__403A8C7D">
+      <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
+      <End Role="CTPTT" EntitySet="CTPTTs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="CTPN">
@@ -75,8 +75,8 @@
     <Property Name="MAS" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="SOLUONGN" Type="Int32" Nullable="false" />
     <Property Name="TONG" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="PHIEUNHAPSACH" Relationship="QLTVModel.FK__CTPNS__MAPNS__25869641" FromRole="CTPN" ToRole="PHIEUNHAPSACH" />
-    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__CTPNS__MAS__267ABA7A" FromRole="CTPN" ToRole="SACH" />
+    <NavigationProperty Name="PHIEUNHAPSACH" Relationship="QLTVModel.FK__CTPNS__MAPNS__276EDEB3" FromRole="CTPN" ToRole="PHIEUNHAPSACH" />
+    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__CTPNS__MAS__286302EC" FromRole="CTPN" ToRole="SACH" />
   </EntityType>
   <EntityType Name="CTPX">
     <Key>
@@ -87,8 +87,8 @@
     <Property Name="MAS" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="SOLUONGN" Type="Int32" Nullable="false" />
     <Property Name="TONG" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="PHIEUXUATSACH" Relationship="QLTVModel.FK__CTPXS__MAPXS__286302EC" FromRole="CTPX" ToRole="PHIEUXUATSACH" />
-    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__CTPXS__MAS__29572725" FromRole="CTPX" ToRole="SACH" />
+    <NavigationProperty Name="PHIEUXUATSACH" Relationship="QLTVModel.FK__CTPXS__MAPXS__2A4B4B5E" FromRole="CTPX" ToRole="PHIEUXUATSACH" />
+    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__CTPXS__MAS__2B3F6F97" FromRole="CTPX" ToRole="SACH" />
   </EntityType>
   <EntityType Name="DAILY">
     <Key>
@@ -99,20 +99,9 @@
     <Property Name="DIACHI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SDT" Type="Int32" Nullable="false" />
     <Property Name="SOTIENNO" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="PHIEUTRATIENs" Relationship="QLTVModel.FK__PHIEUTRATI__MADL__2B3F6F97" FromRole="DAILY" ToRole="PHIEUTRATIEN" />
-    <NavigationProperty Name="PHIEUXUATSACHes" Relationship="QLTVModel.FK__PHIEUXUATS__MADL__276EDEB3" FromRole="DAILY" ToRole="PHIEUXUATSACH" />
-    <NavigationProperty Name="SLDLs" Relationship="QLTVModel.FK__SLDL__MADL__2C3393D0" FromRole="DAILY" ToRole="SLDL" />
-  </EntityType>
-  <EntityType Name="DOANHTHU">
-    <Key>
-      <PropertyRef Name="MADT" />
-    </Key>
-    <Property Name="MADT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MATK" Type="Int32" Nullable="false" />
-    <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SOTIENNXB" Type="Int32" Nullable="false" />
-    <Property Name="DOANHTHU1" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="PHIEUTRATIEN" Relationship="QLTVModel.FK__DOANHTHU__MATK__2E1BDC42" FromRole="DOANHTHU" ToRole="PHIEUTRATIEN" />
+    <NavigationProperty Name="PHIEUTRATIENs" Relationship="QLTVModel.FK__PHIEUTRATI__MADL__2C3393D0" FromRole="DAILY" ToRole="PHIEUTRATIEN" />
+    <NavigationProperty Name="PHIEUXUATSACHes" Relationship="QLTVModel.FK__PHIEUXUATS__MADL__29572725" FromRole="DAILY" ToRole="PHIEUXUATSACH" />
+    <NavigationProperty Name="SLDLs" Relationship="QLTVModel.FK__SLDL__MADL__2E1BDC42" FromRole="DAILY" ToRole="SLDL" />
   </EntityType>
   <EntityType Name="NXB">
     <Key>
@@ -123,8 +112,8 @@
     <Property Name="DIACHI" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="SDT" Type="Int32" Nullable="false" />
     <Property Name="STK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="PHIEUNHAPSACHes" Relationship="QLTVModel.FK__PHIEUNHAP__MANXB__24927208" FromRole="NXB" ToRole="PHIEUNHAPSACH" />
-    <NavigationProperty Name="SACHes" Relationship="QLTVModel.FK__SACH__MANXB__239E4DCF" FromRole="NXB" ToRole="SACH" />
+    <NavigationProperty Name="PHIEUNHAPSACHes" Relationship="QLTVModel.FK__PHIEUNHAP__MANXB__267ABA7A" FromRole="NXB" ToRole="PHIEUNHAPSACH" />
+    <NavigationProperty Name="SACHes" Relationship="QLTVModel.FK__SACH__MANXB__25869641" FromRole="NXB" ToRole="SACH" />
   </EntityType>
   <EntityType Name="PHIEUNHAPSACH">
     <Key>
@@ -135,36 +124,32 @@
     <Property Name="NGUOIGS" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NGAYNHAP" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="THANHTIEN" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CTPNS" Relationship="QLTVModel.FK__CTPNS__MAPNS__25869641" FromRole="PHIEUNHAPSACH" ToRole="CTPN" />
-    <NavigationProperty Name="NXB" Relationship="QLTVModel.FK__PHIEUNHAP__MANXB__24927208" FromRole="PHIEUNHAPSACH" ToRole="NXB" />
+    <NavigationProperty Name="CTPNS" Relationship="QLTVModel.FK__CTPNS__MAPNS__276EDEB3" FromRole="PHIEUNHAPSACH" ToRole="CTPN" />
+    <NavigationProperty Name="NXB" Relationship="QLTVModel.FK__PHIEUNHAP__MANXB__267ABA7A" FromRole="PHIEUNHAPSACH" ToRole="NXB" />
   </EntityType>
   <EntityType Name="PHIEUTRATIEN">
     <Key>
       <PropertyRef Name="MATK" />
     </Key>
     <Property Name="MATK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MAPXS" Type="Int32" Nullable="false" />
     <Property Name="MADL" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SOTIENTRA" Type="Int32" Nullable="false" />
     <Property Name="SOTIENNO" Type="Int32" Nullable="false" />
-    <Property Name="TRANGTHAI" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="DAILY" Relationship="QLTVModel.FK__PHIEUTRATI__MADL__2B3F6F97" FromRole="PHIEUTRATIEN" ToRole="DAILY" />
-    <NavigationProperty Name="DOANHTHUs" Relationship="QLTVModel.FK__DOANHTHU__MATK__2E1BDC42" FromRole="PHIEUTRATIEN" ToRole="DOANHTHU" />
-    <NavigationProperty Name="PHIEUXUATSACH" Relationship="QLTVModel.FK__PHIEUTRAT__MAPXS__2A4B4B5E" FromRole="PHIEUTRATIEN" ToRole="PHIEUXUATSACH" />
+    <Property Name="TRANGTHAI" Type="Int32" />
+    <NavigationProperty Name="DAILY" Relationship="QLTVModel.FK__PHIEUTRATI__MADL__2C3393D0" FromRole="PHIEUTRATIEN" ToRole="DAILY" />
+    <NavigationProperty Name="CTPTTs" Relationship="QLTVModel.FK__CTPTT__MATK__403A8C7D" FromRole="PHIEUTRATIEN" ToRole="CTPTT" />
   </EntityType>
   <EntityType Name="PHIEUXUATSACH">
     <Key>
       <PropertyRef Name="MAPXS" />
     </Key>
-    <Property Name="MAPXS" Type="Int32" Nullable="false" />
+    <Property Name="MAPXS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MADL" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="NGUOINS" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NGAYXUAT" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="THANHTIEN" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CTPXS" Relationship="QLTVModel.FK__CTPXS__MAPXS__286302EC" FromRole="PHIEUXUATSACH" ToRole="CTPX" />
-    <NavigationProperty Name="DAILY" Relationship="QLTVModel.FK__PHIEUXUATS__MADL__276EDEB3" FromRole="PHIEUXUATSACH" ToRole="DAILY" />
-    <NavigationProperty Name="PHIEUTRATIENs" Relationship="QLTVModel.FK__PHIEUTRAT__MAPXS__2A4B4B5E" FromRole="PHIEUXUATSACH" ToRole="PHIEUTRATIEN" />
+    <NavigationProperty Name="CTPXS" Relationship="QLTVModel.FK__CTPXS__MAPXS__2A4B4B5E" FromRole="PHIEUXUATSACH" ToRole="CTPX" />
+    <NavigationProperty Name="DAILY" Relationship="QLTVModel.FK__PHIEUXUATS__MADL__29572725" FromRole="PHIEUXUATSACH" ToRole="DAILY" />
   </EntityType>
   <EntityType Name="SACH">
     <Key>
@@ -178,11 +163,12 @@
     <Property Name="SOLUONG" Type="Int32" Nullable="false" />
     <Property Name="GIANHAP" Type="Int32" Nullable="false" />
     <Property Name="GIABAN" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CTPNS" Relationship="QLTVModel.FK__CTPNS__MAS__267ABA7A" FromRole="SACH" ToRole="CTPN" />
-    <NavigationProperty Name="CTPXS" Relationship="QLTVModel.FK__CTPXS__MAS__29572725" FromRole="SACH" ToRole="CTPX" />
-    <NavigationProperty Name="NXB" Relationship="QLTVModel.FK__SACH__MANXB__239E4DCF" FromRole="SACH" ToRole="NXB" />
-    <NavigationProperty Name="SLDLs" Relationship="QLTVModel.FK__SLDL__MAS__2D27B809" FromRole="SACH" ToRole="SLDL" />
-    <NavigationProperty Name="TKTKs" Relationship="QLTVModel.FK__TKTK__MAS__47DBAE45" FromRole="SACH" ToRole="TKTK" />
+    <NavigationProperty Name="CTPNS" Relationship="QLTVModel.FK__CTPNS__MAS__286302EC" FromRole="SACH" ToRole="CTPN" />
+    <NavigationProperty Name="CTPXS" Relationship="QLTVModel.FK__CTPXS__MAS__2B3F6F97" FromRole="SACH" ToRole="CTPX" />
+    <NavigationProperty Name="NXB" Relationship="QLTVModel.FK__SACH__MANXB__25869641" FromRole="SACH" ToRole="NXB" />
+    <NavigationProperty Name="SLDLs" Relationship="QLTVModel.FK__SLDL__MAS__2F10007B" FromRole="SACH" ToRole="SLDL" />
+    <NavigationProperty Name="TKTKs" Relationship="QLTVModel.FK__TKTK__MAS__30F848ED" FromRole="SACH" ToRole="TKTK" />
+    <NavigationProperty Name="CTPTTs" Relationship="QLTVModel.FK__CTPTT__MAS__3E52440B" FromRole="SACH" ToRole="CTPTT" />
   </EntityType>
   <EntityType Name="SLDL">
     <Key>
@@ -192,10 +178,20 @@
     <Property Name="MADL" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="MAS" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="SLTON" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="DAILY" Relationship="QLTVModel.FK__SLDL__MADL__2C3393D0" FromRole="SLDL" ToRole="DAILY" />
-    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__SLDL__MAS__2D27B809" FromRole="SLDL" ToRole="SACH" />
+    <NavigationProperty Name="DAILY" Relationship="QLTVModel.FK__SLDL__MADL__2E1BDC42" FromRole="SLDL" ToRole="DAILY" />
+    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__SLDL__MAS__2F10007B" FromRole="SLDL" ToRole="SACH" />
   </EntityType>
-  <Association Name="FK__CTPNS__MAPNS__25869641">
+  <EntityType Name="TKTK">
+    <Key>
+      <PropertyRef Name="MAKHO" />
+    </Key>
+    <Property Name="MAKHO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAS" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SLTON" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__TKTK__MAS__30F848ED" FromRole="TKTK" ToRole="SACH" />
+  </EntityType>
+  <Association Name="FK__CTPNS__MAPNS__276EDEB3">
     <End Type="QLTVModel.PHIEUNHAPSACH" Role="PHIEUNHAPSACH" Multiplicity="1" />
     <End Type="QLTVModel.CTPN" Role="CTPN" Multiplicity="*" />
     <ReferentialConstraint>
@@ -207,7 +203,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPNS__MAS__267ABA7A">
+  <Association Name="FK__CTPNS__MAS__286302EC">
     <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="1" />
     <End Type="QLTVModel.CTPN" Role="CTPN" Multiplicity="*" />
     <ReferentialConstraint>
@@ -219,7 +215,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPXS__MAPXS__286302EC">
+  <Association Name="FK__CTPXS__MAPXS__2A4B4B5E">
     <End Type="QLTVModel.PHIEUXUATSACH" Role="PHIEUXUATSACH" Multiplicity="1" />
     <End Type="QLTVModel.CTPX" Role="CTPX" Multiplicity="*" />
     <ReferentialConstraint>
@@ -231,7 +227,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPXS__MAS__29572725">
+  <Association Name="FK__CTPXS__MAS__2B3F6F97">
     <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="1" />
     <End Type="QLTVModel.CTPX" Role="CTPX" Multiplicity="*" />
     <ReferentialConstraint>
@@ -243,7 +239,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTRATI__MADL__2B3F6F97">
+  <Association Name="FK__PHIEUTRATI__MADL__2C3393D0">
     <End Type="QLTVModel.DAILY" Role="DAILY" Multiplicity="1" />
     <End Type="QLTVModel.PHIEUTRATIEN" Role="PHIEUTRATIEN" Multiplicity="*" />
     <ReferentialConstraint>
@@ -255,7 +251,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUXUATS__MADL__276EDEB3">
+  <Association Name="FK__PHIEUXUATS__MADL__29572725">
     <End Type="QLTVModel.DAILY" Role="DAILY" Multiplicity="1" />
     <End Type="QLTVModel.PHIEUXUATSACH" Role="PHIEUXUATSACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -267,7 +263,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SLDL__MADL__2C3393D0">
+  <Association Name="FK__SLDL__MADL__2E1BDC42">
     <End Type="QLTVModel.DAILY" Role="DAILY" Multiplicity="1" />
     <End Type="QLTVModel.SLDL" Role="SLDL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -279,19 +275,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DOANHTHU__MATK__2E1BDC42">
-    <End Type="QLTVModel.PHIEUTRATIEN" Role="PHIEUTRATIEN" Multiplicity="1" />
-    <End Type="QLTVModel.DOANHTHU" Role="DOANHTHU" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PHIEUTRATIEN">
-        <PropertyRef Name="MATK" />
-      </Principal>
-      <Dependent Role="DOANHTHU">
-        <PropertyRef Name="MATK" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PHIEUNHAP__MANXB__24927208">
+  <Association Name="FK__PHIEUNHAP__MANXB__267ABA7A">
     <End Type="QLTVModel.NXB" Role="NXB" Multiplicity="1" />
     <End Type="QLTVModel.PHIEUNHAPSACH" Role="PHIEUNHAPSACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -303,7 +287,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SACH__MANXB__239E4DCF">
+  <Association Name="FK__SACH__MANXB__25869641">
     <End Type="QLTVModel.NXB" Role="NXB" Multiplicity="1" />
     <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -315,19 +299,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTRAT__MAPXS__2A4B4B5E">
-    <End Type="QLTVModel.PHIEUXUATSACH" Role="PHIEUXUATSACH" Multiplicity="1" />
-    <End Type="QLTVModel.PHIEUTRATIEN" Role="PHIEUTRATIEN" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PHIEUXUATSACH">
-        <PropertyRef Name="MAPXS" />
-      </Principal>
-      <Dependent Role="PHIEUTRATIEN">
-        <PropertyRef Name="MAPXS" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SLDL__MAS__2D27B809">
+  <Association Name="FK__SLDL__MAS__2F10007B">
     <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="1" />
     <End Type="QLTVModel.SLDL" Role="SLDL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -339,28 +311,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="TKTK">
-    <Key>
-      <PropertyRef Name="MAKHO" />
-    </Key>
-    <Property Name="MAKHO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SLTON" Type="Int32" Nullable="false" />
-    <Property Name="MAS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__TKTK__MAS__47DBAE45" FromRole="TKTK" ToRole="SACH" />
-  </EntityType>
-  <Association Name="FK__TKTK__MAS__47DBAE45">
-    <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="0..1" />
+  <Association Name="FK__TKTK__MAS__30F848ED">
+    <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="1" />
     <End Type="QLTVModel.TKTK" Role="TKTK" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SACH">
@@ -368,6 +320,50 @@
       </Principal>
       <Dependent Role="TKTK">
         <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DOANHTHU">
+    <Key>
+      <PropertyRef Name="MADT" />
+    </Key>
+    <Property Name="MADT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SOTIENNXB" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CTPTT">
+    <Key>
+      <PropertyRef Name="MATK" />
+      <PropertyRef Name="MAS" />
+    </Key>
+    <Property Name="MATK" Type="Int32" Nullable="false" />
+    <Property Name="MAS" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SOLUONGN" Type="Int32" Nullable="false" />
+    <Property Name="TONG" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SACH" Relationship="QLTVModel.FK__CTPTT__MAS__3E52440B" FromRole="CTPTT" ToRole="SACH" />
+    <NavigationProperty Name="PHIEUTRATIEN" Relationship="QLTVModel.FK__CTPTT__MATK__403A8C7D" FromRole="CTPTT" ToRole="PHIEUTRATIEN" />
+  </EntityType>
+  <Association Name="FK__CTPTT__MAS__3E52440B">
+    <End Type="QLTVModel.SACH" Role="SACH" Multiplicity="1" />
+    <End Type="QLTVModel.CTPTT" Role="CTPTT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MAS" />
+      </Principal>
+      <Dependent Role="CTPTT">
+        <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTPTT__MATK__403A8C7D">
+    <End Type="QLTVModel.PHIEUTRATIEN" Role="PHIEUTRATIEN" Multiplicity="1" />
+    <End Type="QLTVModel.CTPTT" Role="CTPTT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUTRATIEN">
+        <PropertyRef Name="MATK" />
+      </Principal>
+      <Dependent Role="CTPTT">
+        <PropertyRef Name="MATK" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

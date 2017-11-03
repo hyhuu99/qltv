@@ -2,122 +2,103 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.Mvc;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Description;
 using QLTV.Models;
 
 namespace QLTV.Controllers
 {
-    public class DOANHTHUsController : Controller
+    public class DOANHTHUsController : ApiController
     {
         private QLTVEntities db = new QLTVEntities();
 
-        // GET: DOANHTHUs
-        public ActionResult Index()
+        // GET: api/DOANHTHUs
+        public IQueryable<DOANHTHU> GetDOANHTHUs()
         {
-            var dOANHTHUs = db.DOANHTHUs.Include(d => d.PHIEUTRATIEN);
-            return View(dOANHTHUs.ToList());
+            return db.DOANHTHUs;
         }
 
-        // GET: DOANHTHUs/Details/5
-        public ActionResult Details(int? id)
+        // GET: api/DOANHTHUs/5
+        [ResponseType(typeof(DOANHTHU))]
+        public IHttpActionResult GetDOANHTHU(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             DOANHTHU dOANHTHU = db.DOANHTHUs.Find(id);
             if (dOANHTHU == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(dOANHTHU);
+
+            return Ok(dOANHTHU);
         }
 
-        // GET: DOANHTHUs/Create
-        public ActionResult Create()
+        // PUT: api/DOANHTHUs/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutDOANHTHU(int id, DOANHTHU dOANHTHU)
         {
-            ViewBag.MATK = new SelectList(db.PHIEUTRATIENs, "MATK", "MADL");
-            return View();
-        }
-
-        // POST: DOANHTHUs/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MADT,MATK,NGAY,SOTIENNXB,DOANHTHU1")] DOANHTHU dOANHTHU)
-        {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.DOANHTHUs.Add(dOANHTHU);
+                return BadRequest(ModelState);
+            }
+
+            if (id != dOANHTHU.MADT)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(dOANHTHU).State = EntityState.Modified;
+
+            try
+            {
                 db.SaveChanges();
-                return RedirectToAction("Index");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DOANHTHUExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            ViewBag.MATK = new SelectList(db.PHIEUTRATIENs, "MATK", "MADL", dOANHTHU.MATK);
-            return View(dOANHTHU);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: DOANHTHUs/Edit/5
-        public ActionResult Edit(int? id)
+        // POST: api/DOANHTHUs
+        [ResponseType(typeof(DOANHTHU))]
+        public IHttpActionResult PostDOANHTHU(DOANHTHU dOANHTHU)
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return BadRequest(ModelState);
             }
+
+            db.DOANHTHUs.Add(dOANHTHU);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = dOANHTHU.MADT }, dOANHTHU);
+        }
+
+        // DELETE: api/DOANHTHUs/5
+        [ResponseType(typeof(DOANHTHU))]
+        public IHttpActionResult DeleteDOANHTHU(int id)
+        {
             DOANHTHU dOANHTHU = db.DOANHTHUs.Find(id);
             if (dOANHTHU == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            ViewBag.MATK = new SelectList(db.PHIEUTRATIENs, "MATK", "MADL", dOANHTHU.MATK);
-            return View(dOANHTHU);
-        }
 
-        // POST: DOANHTHUs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MADT,MATK,NGAY,SOTIENNXB,DOANHTHU1")] DOANHTHU dOANHTHU)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dOANHTHU).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MATK = new SelectList(db.PHIEUTRATIENs, "MATK", "MADL", dOANHTHU.MATK);
-            return View(dOANHTHU);
-        }
-
-        // GET: DOANHTHUs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DOANHTHU dOANHTHU = db.DOANHTHUs.Find(id);
-            if (dOANHTHU == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dOANHTHU);
-        }
-
-        // POST: DOANHTHUs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            DOANHTHU dOANHTHU = db.DOANHTHUs.Find(id);
             db.DOANHTHUs.Remove(dOANHTHU);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            return Ok(dOANHTHU);
         }
 
         protected override void Dispose(bool disposing)
@@ -127,6 +108,11 @@ namespace QLTV.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private bool DOANHTHUExists(int id)
+        {
+            return db.DOANHTHUs.Count(e => e.MADT == id) > 0;
         }
     }
 }
