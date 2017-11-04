@@ -50,6 +50,7 @@
             <PropertyRef Name="MADT" />
           </Key>
           <Property Name="MADT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANXB" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="NGAY" Type="datetime" Nullable="false" />
           <Property Name="SOTIENNXB" Type="int" Nullable="false" />
         </EntityType>
@@ -62,6 +63,7 @@
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="SDT" Type="int" Nullable="false" />
           <Property Name="STK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SOTIENNO" Type="int" />
         </EntityType>
         <EntityType Name="PHIEUNHAPSACH">
           <Key>
@@ -193,6 +195,18 @@
             </Principal>
             <Dependent Role="CTPXS">
               <PropertyRef Name="MAS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DOANHTHU__MANXB__4316F928">
+          <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+          <End Role="DOANHTHU" Type="Self.DOANHTHU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="MANXB" />
+            </Principal>
+            <Dependent Role="DOANHTHU">
+              <PropertyRef Name="MANXB" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -329,6 +343,10 @@
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CTPXS" EntitySet="CTPXS" />
           </AssociationSet>
+          <AssociationSet Name="FK__DOANHTHU__MANXB__4316F928" Association="Self.FK__DOANHTHU__MANXB__4316F928">
+            <End Role="NXB" EntitySet="NXB" />
+            <End Role="DOANHTHU" EntitySet="DOANHTHU" />
+          </AssociationSet>
           <AssociationSet Name="FK__PHIEUNHAP__MANXB__267ABA7A" Association="Self.FK__PHIEUNHAP__MANXB__267ABA7A">
             <End Role="NXB" EntitySet="NXB" />
             <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACH" />
@@ -421,7 +439,6 @@
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="TKTK" EntitySet="TKTKs" />
           </AssociationSet>
-          <EntitySet Name="DOANHTHUs" EntityType="QLTVModel.DOANHTHU" />
           <EntitySet Name="CTPTTs" EntityType="QLTVModel.CTPTT" />
           <AssociationSet Name="FK__CTPTT__MAS__3E52440B" Association="QLTVModel.FK__CTPTT__MAS__3E52440B">
             <End Role="SACH" EntitySet="SACHes" />
@@ -430,6 +447,11 @@
           <AssociationSet Name="FK__CTPTT__MATK__403A8C7D" Association="QLTVModel.FK__CTPTT__MATK__403A8C7D">
             <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
             <End Role="CTPTT" EntitySet="CTPTTs" />
+          </AssociationSet>
+          <EntitySet Name="DOANHTHUs" EntityType="QLTVModel.DOANHTHU" />
+          <AssociationSet Name="FK__DOANHTHU__MANXB__4316F928" Association="QLTVModel.FK__DOANHTHU__MANXB__4316F928">
+            <End Role="NXB" EntitySet="NXBs" />
+            <End Role="DOANHTHU" EntitySet="DOANHTHUs" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="CTPN">
@@ -480,6 +502,8 @@
           <Property Name="STK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PHIEUNHAPSACHes" Relationship="QLTVModel.FK__PHIEUNHAP__MANXB__267ABA7A" FromRole="NXB" ToRole="PHIEUNHAPSACH" />
           <NavigationProperty Name="SACHes" Relationship="QLTVModel.FK__SACH__MANXB__25869641" FromRole="NXB" ToRole="SACH" />
+          <NavigationProperty Name="DOANHTHUs" Relationship="QLTVModel.FK__DOANHTHU__MANXB__4316F928" FromRole="NXB" ToRole="DOANHTHU" />
+          <Property Name="SOTIENNO" Type="Int32" />
         </EntityType>
         <EntityType Name="PHIEUNHAPSACH">
           <Key>
@@ -689,14 +713,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="DOANHTHU">
-          <Key>
-            <PropertyRef Name="MADT" />
-          </Key>
-          <Property Name="MADT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SOTIENNXB" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="CTPTT">
           <Key>
             <PropertyRef Name="MATK" />
@@ -730,6 +746,28 @@
             </Principal>
             <Dependent Role="CTPTT">
               <PropertyRef Name="MATK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DOANHTHU">
+          <Key>
+            <PropertyRef Name="MADT" />
+          </Key>
+          <Property Name="MADT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANXB" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SOTIENNXB" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NXB" Relationship="QLTVModel.FK__DOANHTHU__MANXB__4316F928" FromRole="DOANHTHU" ToRole="NXB" />
+        </EntityType>
+        <Association Name="FK__DOANHTHU__MANXB__4316F928">
+          <End Type="QLTVModel.NXB" Role="NXB" Multiplicity="1" />
+          <End Type="QLTVModel.DOANHTHU" Role="DOANHTHU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="MANXB" />
+            </Principal>
+            <Dependent Role="DOANHTHU">
+              <PropertyRef Name="MANXB" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -773,6 +811,7 @@
           <EntitySetMapping Name="NXBs">
             <EntityTypeMapping TypeName="QLTVModel.NXB">
               <MappingFragment StoreEntitySet="NXB">
+                <ScalarProperty Name="SOTIENNO" ColumnName="SOTIENNO" />
                 <ScalarProperty Name="STK" ColumnName="STK" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
@@ -847,15 +886,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DOANHTHUs">
-            <EntityTypeMapping TypeName="QLTVModel.DOANHTHU">
-              <MappingFragment StoreEntitySet="DOANHTHU">
-                <ScalarProperty Name="SOTIENNXB" ColumnName="SOTIENNXB" />
-                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
-                <ScalarProperty Name="MADT" ColumnName="MADT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CTPTTs">
             <EntityTypeMapping TypeName="QLTVModel.CTPTT">
               <MappingFragment StoreEntitySet="CTPTT">
@@ -863,6 +893,16 @@
                 <ScalarProperty Name="SOLUONGN" ColumnName="SOLUONGN" />
                 <ScalarProperty Name="MAS" ColumnName="MAS" />
                 <ScalarProperty Name="MATK" ColumnName="MATK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOANHTHUs">
+            <EntityTypeMapping TypeName="QLTVModel.DOANHTHU">
+              <MappingFragment StoreEntitySet="DOANHTHU">
+                <ScalarProperty Name="SOTIENNXB" ColumnName="SOTIENNXB" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+                <ScalarProperty Name="MADT" ColumnName="MADT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

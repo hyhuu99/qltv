@@ -19,6 +19,7 @@ namespace QLTV.Models
         {
             this.PHIEUNHAPSACHes = new HashSet<PHIEUNHAPSACH>();
             this.SACHes = new HashSet<SACH>();
+            this.DOANHTHUs = new HashSet<DOANHTHU>();
         }
     
         public string MANXB { get; set; }
@@ -26,10 +27,13 @@ namespace QLTV.Models
         public string DIACHI { get; set; }
         public int SDT { get; set; }
         public string STK { get; set; }
+        public Nullable<int> SOTIENNO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUNHAPSACH> PHIEUNHAPSACHes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SACH> SACHes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOANHTHU> DOANHTHUs { get; set; }
     }
 }

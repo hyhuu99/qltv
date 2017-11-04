@@ -1,0 +1,41 @@
+﻿@model QLTV.Models.tonkho
+@{
+    ViewBag.Title = "thongketonkho";
+}
+
+<h2>Thống kê tồn kho</h2>
+@using (Html.BeginForm("Index", "thongketonkho", FormMethod.Get))
+{
+
+    <div class="form-inline">
+        @Html.Label("Sách")
+        <div class="form-group">
+            @Html.DropDownList("MAS", null, htmlAttributes: new { @class = "form-control", @id = "item" })
+        </div>
+        @Html.Label("Ngày ")
+        <div class="form-group input-group-sm">
+            @Html.TextBox("ngay", null, new { @class = "form-control datepicker", placeholder = "Chọn ngày", autocomplete = "off" })
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>Ngày</th>
+        <th>
+            @Html.DisplayName("Số lượng còn lại")
+        </th>
+    </tr>
+    @foreach (var item in Model.daily)
+    {
+        <tr>
+            <td>@Html.DisplayFor(o => o.dt)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENDL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOTIENNO)
+            </td>
+        </tr>
+    }
+</table>
+

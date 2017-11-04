@@ -37,9 +37,23 @@ namespace QLTV.Controllers
             }
             return View(ptt);
         }
+        public ActionResult thanhtoan(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PHIEUTRATIEN ptt = db.PHIEUTRATIENs.Find(id);
+            ptt.TRANGTHAI = 1;
+            db.Entry(ptt).State = EntityState.Modified;
+            db.SaveChanges();
+            ModelState.AddModelError(" ", "Đã thanh toán thành công");
+            return View();
 
-        // GET: PHIEUTRATIENs/Create
-        public ActionResult Create()
+        }
+
+            // GET: PHIEUTRATIENs/Create
+            public ActionResult Create()
         {
             ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL");
             ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");

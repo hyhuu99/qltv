@@ -1,4 +1,4 @@
-﻿@model QLTV.Models.PHIEUTRATIEN
+﻿@model QLTV.Models.sachdaban
 
 @{
     ViewBag.Title = "Edit";
@@ -10,73 +10,85 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>PHIEUTRATIEN</h4>
+        <h4>Sách đã bán</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MATK)
-
         <div class="form-group">
-            @Html.LabelFor(model => model.MAPXS, "MAPXS", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieutratiens.MADL, "Tên đại lý", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MAPXS", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MAPXS, "", new { @class = "text-danger" })
+                @Html.DropDownList("phieutratiens.MADL", ViewBag.MADL as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.phieutratiens.MADL, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MADL, "MADL", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieutratiens.NGAY, "Ngày lập phiếu", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MADL", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MADL, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.phieutratiens.NGAY, new { htmlAttributes = new { @class = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.phieutratiens.NGAY, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NGAY, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NGAY, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NGAY, "", new { @class = "text-danger" })
+        <div class="form-inline">
+            <h4>Chi tiết</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.ctptt.MAS, "Tên sách")
+            <div class="form-group">
+                @Html.DropDownList("ctptt.MAS", ViewBag.MAS as SelectList, htmlAttributes: new { @class = "form-control", @id = "item" })
+                @Html.ValidationMessageFor(model => model.ctptt.MAS, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.ctptt.SOLUONGN, "Số lượng")
+            <div class="form-group">
+                @Html.EditorFor(model => model.ctptt.SOLUONGN, new { htmlAttributes = new { @class = "form-control", @id = "amount" } })
+                @Html.ValidationMessageFor(model => model.ctptt.SOLUONGN, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group" style="padding-left:3%">
+                <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SOTIENTRA, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SOTIENTRA, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SOTIENTRA, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SOTIENNO, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SOTIENNO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SOTIENNO, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TRANGTHAI, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TRANGTHAI, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+        <hr />
+        <table class="table" id="chitiet">
+            <tr>
+                <td>Mã phiếu trả tiền</td>
+                <td>Mã sách</td>
+                <td>Tên Sách</td>
+                <td>Số lượng đã bán</td>
+                <td></td>
+            </tr>
+            @*@if (Model != null)
+                {
+                    foreach (var ct in Model.phieunhaps.CTPNS)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => ct.MAPNS)</td>
+                            <td>@Html.DisplayFor(modelItem => ct.MAS)</td>
+                            <td>@Html.DisplayFor(modelItem => ct.SACH.MAS)</td>
+                            <td>@Html.DisplayFor(modelItem => ct.soluong)</td>
+                            <td><button class="btn btn-danger btnDelete">Delete</button></td>
+                            @Html.Hidden("ct.Index", ct.idctpn)
+                            @Html.Hidden("ct[" + ct.idctpn + "].idsach", ct.idsach)
+                            @Html.Hidden("ct[" + ct.idctpn + "].soluong", ct.soluong)
+                        </tr>
+                    }
+                }*@
+        </table>
+        <hr />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
 
+}
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/myjquery")
 }

@@ -27,10 +27,11 @@
         <AssociationConnector Association="QLTVModel.FK__SACH__MANXB__25869641" />
         <AssociationConnector Association="QLTVModel.FK__SLDL__MAS__2F10007B" />
         <AssociationConnector Association="QLTVModel.FK__TKTK__MAS__30F848ED" />
-        <EntityTypeShape EntityType="QLTVModel.DOANHTHU" Width="1.5" PointX="9" PointY="0.75" />
         <EntityTypeShape EntityType="QLTVModel.CTPTT" Width="1.5" PointX="12" PointY="8.25" />
         <AssociationConnector Association="QLTVModel.FK__CTPTT__MAS__3E52440B" />
         <AssociationConnector Association="QLTVModel.FK__CTPTT__MATK__403A8C7D" />
+        <EntityTypeShape EntityType="QLTVModel.DOANHTHU" Width="1.5" PointX="3" PointY="5.5" />
+        <AssociationConnector Association="QLTVModel.FK__DOANHTHU__MANXB__4316F928" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

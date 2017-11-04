@@ -6,44 +6,35 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>DOANHTHU</h4>
+        <h4>Phiếu trả ti</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.MATK, "MATK", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MANXB, "Mã nhà xuất bản", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MATK", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MATK, "", new { @class = "text-danger" })
+                @Html.DropDownList("MANXB", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MANXB, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NGAY, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NGAY,"Ngày trả tiền", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NGAY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NGAY, new { htmlAttributes = new { @class = "datepicker" } })
                 @Html.ValidationMessageFor(model => model.NGAY, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SOTIENNXB, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SOTIENNXB,"Số tiền trả", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SOTIENNXB, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SOTIENNXB, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DOANHTHU1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DOANHTHU1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DOANHTHU1, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -58,7 +49,8 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/myjquery")
 }

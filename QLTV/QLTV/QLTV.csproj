@@ -189,11 +189,13 @@
     <Compile Include="Controllers\PHIEUXUATSACHesController.cs" />
     <Compile Include="Controllers\SACHesController.cs" />
     <Compile Include="Controllers\SLDLsController.cs" />
+    <Compile Include="Controllers\thongketonkhoController.cs" />
     <Compile Include="Controllers\TKTKsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\congnodaily.cs" />
     <Compile Include="Models\CTPN.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
@@ -250,6 +252,7 @@
     <Compile Include="Models\TKTK.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tonkho.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -488,11 +491,6 @@
     <Content Include="Views\TKTKs\Details.cshtml" />
     <Content Include="Views\TKTKs\Edit.cshtml" />
     <Content Include="Views\TKTKs\Index.cshtml" />
-    <Content Include="Views\DOANHTHUs\Create.cshtml" />
-    <Content Include="Views\DOANHTHUs\Delete.cshtml" />
-    <Content Include="Views\DOANHTHUs\Details.cshtml" />
-    <Content Include="Views\DOANHTHUs\Edit.cshtml" />
-    <Content Include="Views\DOANHTHUs\Index.cshtml" />
     <Content Include="Views\PHIEUTRATIENs\Create.cshtml" />
     <Content Include="Views\PHIEUTRATIENs\Delete.cshtml" />
     <Content Include="Views\PHIEUTRATIENs\Details.cshtml" />
@@ -504,9 +502,16 @@
     <Content Include="Views\SLDLs\Edit.cshtml" />
     <Content Include="Views\SLDLs\Index.cshtml" />
     <Content Include="Views\congnodaily\index.cshtml" />
+    <Content Include="Views\thongketonkho\index.cshtml" />
+    <Content Include="Views\DOANHTHUs\Create.cshtml" />
+    <Content Include="Views\DOANHTHUs\Delete.cshtml" />
+    <Content Include="Views\DOANHTHUs\Details.cshtml" />
+    <Content Include="Views\DOANHTHUs\Edit.cshtml" />
+    <Content Include="Views\DOANHTHUs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\tonkho\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -15,7 +15,10 @@ namespace QLTV.Models
     public partial class DOANHTHU
     {
         public int MADT { get; set; }
+        public string MANXB { get; set; }
         public System.DateTime NGAY { get; set; }
         public int SOTIENNXB { get; set; }
+    
+        public virtual NXB NXB { get; set; }
     }
 }

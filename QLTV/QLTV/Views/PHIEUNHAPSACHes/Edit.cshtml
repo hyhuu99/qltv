@@ -1,4 +1,4 @@
-﻿@model QLTV.Models.PHIEUNHAPSACH
+﻿@model QLTV.Models.phieunhap
 
 @{
     ViewBag.Title = "Edit";
@@ -10,48 +10,87 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>PHIEUNHAPSACH</h4>
+        <h4>Phiếu nhập sách</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MAPNS)
-
         <div class="form-group">
-            @Html.LabelFor(model => model.MANXB, "MANXB", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhaps.MANXB, "Mã nhà xuất bản", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MANXB", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MANXB, "", new { @class = "text-danger" })
+                @Html.DropDownList("phieunhaps.MANXB", ViewBag.MANXB as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.phieunhaps.MANXB, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NGUOIGS, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhaps.NGUOIGS, "Người viết phiếu", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NGUOIGS, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NGUOIGS, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.phieunhaps.NGUOIGS, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.phieunhaps.NGUOIGS, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NGAYNHAP, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.phieunhaps.NGAYNHAP, "Ngày nhập", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NGAYNHAP, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NGAYNHAP, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.phieunhaps.NGAYNHAP, new { htmlAttributes = new { id = "ngaynhap", @class = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.phieunhaps.NGAYNHAP, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.THANHTIEN, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.THANHTIEN, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.THANHTIEN, "", new { @class = "text-danger" })
+        <div class="form-inline">
+            <h4>Chi tiết phiếu nhập</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Label("Tên sách")
+            <div class="form-group" style="padding-left:3%">
+                @Html.DropDownList("MAS", null, htmlAttributes: new { @class = "form-control", @id = "item" })
+                @Html.ValidationMessageFor(model => model.ctpn.MAS, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.ctpn.SOLUONGN, "Số lượng nhập", htmlAttributes: new { style = "padding-left:5%" })
+            <div class="form-group" style="padding-left:3%">
+                @Html.EditorFor(model => model.ctpn.SOLUONGN, new { htmlAttributes = new { @class = "form-control", @id = "amount" } })
+                @Html.ValidationMessageFor(model => model.phieunhaps.CTPNS, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group" style="padding-left:3%">
+                <input type="button" id="btnAdd" class="btn btn-default" value="Add" />
             </div>
         </div>
+        <hr />
+        <table class="table" id="chitiet">
+            <tr>
+                <td>Mã phiếu nhập</td>
+                <td>Tên Sách</td>
+                <td>Số lượng nhập</td>
+                <td></td>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var ct in Model.phieunhaps.CTPNS)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => ct.MAPNS)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.SACH.TENS)</td>
+                        <td>@Html.DisplayFor(modelItem => ct.SOLUONGN)</td>
+                        <td><button class="btn btn-danger btnDelete">Delete</button></td>
+                        @Html.Hidden("ct.Index", ct.MAPNS)
+                        @Html.Hidden("ct[" + ct.MAPNS + "].MAS", ct.MAS)
+                        @Html.Hidden("ct[" + ct.MAPNS + "].SOLUONGN", ct.SOLUONGN)
+                    </tr>
+                }
+            }            
+            else
+            {
+                <tr>
+                    Không có chi tiết
+                </tr>
+            }                                           
+        </table>
+        <hr />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -63,4 +102,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/myjquery")
+    @*<script>
+            $(function () {
+                   console.log("awdawd");
+                   $(".datepicker").datepicker({ dateFormate: 'dd-mm-yyyy' });
+               });
+        </script>*@
+
 }

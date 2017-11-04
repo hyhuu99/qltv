@@ -45,6 +45,7 @@
       <PropertyRef Name="MADT" />
     </Key>
     <Property Name="MADT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MANXB" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="NGAY" Type="datetime" Nullable="false" />
     <Property Name="SOTIENNXB" Type="int" Nullable="false" />
   </EntityType>
@@ -57,6 +58,7 @@
     <Property Name="DIACHI" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="SDT" Type="int" Nullable="false" />
     <Property Name="STK" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SOTIENNO" Type="int" />
   </EntityType>
   <EntityType Name="PHIEUNHAPSACH">
     <Key>
@@ -188,6 +190,18 @@
       </Principal>
       <Dependent Role="CTPXS">
         <PropertyRef Name="MAS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DOANHTHU__MANXB__4316F928">
+    <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+    <End Role="DOANHTHU" Type="Self.DOANHTHU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="MANXB" />
+      </Principal>
+      <Dependent Role="DOANHTHU">
+        <PropertyRef Name="MANXB" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -323,6 +337,10 @@
     <AssociationSet Name="FK__CTPXS__MAS__2B3F6F97" Association="Self.FK__CTPXS__MAS__2B3F6F97">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="CTPXS" EntitySet="CTPXS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DOANHTHU__MANXB__4316F928" Association="Self.FK__DOANHTHU__MANXB__4316F928">
+      <End Role="NXB" EntitySet="NXB" />
+      <End Role="DOANHTHU" EntitySet="DOANHTHU" />
     </AssociationSet>
     <AssociationSet Name="FK__PHIEUNHAP__MANXB__267ABA7A" Association="Self.FK__PHIEUNHAP__MANXB__267ABA7A">
       <End Role="NXB" EntitySet="NXB" />

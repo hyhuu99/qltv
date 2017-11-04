@@ -35,7 +35,7 @@ namespace QLTV.Models
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<SLDL> SLDLs { get; set; }
         public virtual DbSet<TKTK> TKTKs { get; set; }
-        public virtual DbSet<DOANHTHU> DOANHTHUs { get; set; }
         public virtual DbSet<CTPTT> CTPTTs { get; set; }
+        public virtual DbSet<DOANHTHU> DOANHTHUs { get; set; }
     }
 }

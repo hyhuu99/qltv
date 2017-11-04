@@ -1,7 +1,50 @@
-﻿
+﻿@model QLTV.Models.congnodaily
 @{
     ViewBag.Title = "congnodaily";
 }
 
 <h2>Công nợ đại lý</h2>
+@using (Html.BeginForm("Index", "congnodaily", FormMethod.Get))
+{
+
+    <div class="form-inline">
+        @Html.Label("Tên đại lý")
+        <div class="form-group">
+            @Html.DropDownList("MADL", null, htmlAttributes: new { @class = "form-control", @id = "item" })
+        </div>
+        @Html.Label("Ngày ")
+        <div class="form-group input-group-sm">
+            @Html.TextBox("ngay", null, new { @class = "form-control datepicker", placeholder = "Click here", autocomplete = "off", type = "date" })
+        </div>
+        <div class="form-group">
+            <div class="form-group" style="padding-left:3%">
+                <input type="submit" value="Tìm kiếm" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+<table class="table">
+    <tr>
+        <th>Ngày</th>
+        <th>
+            @Html.DisplayName("Đại lý")
+        </th>
+        <th>
+            @Html.DisplayName("Công nợ")
+        </th>
+    </tr>
+    @foreach (var item in Model.daily)
+    {
+        <tr>
+            <td>@Html.DisplayFor(o => o.dt)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENDL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOTIENNO)
+            </td>
+        </tr>
+    }
+</table>
 

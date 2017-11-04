@@ -55,7 +55,6 @@
       <End Role="SACH" EntitySet="SACHes" />
       <End Role="TKTK" EntitySet="TKTKs" />
     </AssociationSet>
-    <EntitySet Name="DOANHTHUs" EntityType="QLTVModel.DOANHTHU" />
     <EntitySet Name="CTPTTs" EntityType="QLTVModel.CTPTT" />
     <AssociationSet Name="FK__CTPTT__MAS__3E52440B" Association="QLTVModel.FK__CTPTT__MAS__3E52440B">
       <End Role="SACH" EntitySet="SACHes" />
@@ -64,6 +63,11 @@
     <AssociationSet Name="FK__CTPTT__MATK__403A8C7D" Association="QLTVModel.FK__CTPTT__MATK__403A8C7D">
       <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIENs" />
       <End Role="CTPTT" EntitySet="CTPTTs" />
+    </AssociationSet>
+    <EntitySet Name="DOANHTHUs" EntityType="QLTVModel.DOANHTHU" />
+    <AssociationSet Name="FK__DOANHTHU__MANXB__4316F928" Association="QLTVModel.FK__DOANHTHU__MANXB__4316F928">
+      <End Role="NXB" EntitySet="NXBs" />
+      <End Role="DOANHTHU" EntitySet="DOANHTHUs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="CTPN">
@@ -114,6 +118,8 @@
     <Property Name="STK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PHIEUNHAPSACHes" Relationship="QLTVModel.FK__PHIEUNHAP__MANXB__267ABA7A" FromRole="NXB" ToRole="PHIEUNHAPSACH" />
     <NavigationProperty Name="SACHes" Relationship="QLTVModel.FK__SACH__MANXB__25869641" FromRole="NXB" ToRole="SACH" />
+    <NavigationProperty Name="DOANHTHUs" Relationship="QLTVModel.FK__DOANHTHU__MANXB__4316F928" FromRole="NXB" ToRole="DOANHTHU" />
+    <Property Name="SOTIENNO" Type="Int32" />
   </EntityType>
   <EntityType Name="PHIEUNHAPSACH">
     <Key>
@@ -323,14 +329,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="DOANHTHU">
-    <Key>
-      <PropertyRef Name="MADT" />
-    </Key>
-    <Property Name="MADT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SOTIENNXB" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="CTPTT">
     <Key>
       <PropertyRef Name="MATK" />
@@ -364,6 +362,28 @@
       </Principal>
       <Dependent Role="CTPTT">
         <PropertyRef Name="MATK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DOANHTHU">
+    <Key>
+      <PropertyRef Name="MADT" />
+    </Key>
+    <Property Name="MADT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANXB" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SOTIENNXB" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NXB" Relationship="QLTVModel.FK__DOANHTHU__MANXB__4316F928" FromRole="DOANHTHU" ToRole="NXB" />
+  </EntityType>
+  <Association Name="FK__DOANHTHU__MANXB__4316F928">
+    <End Type="QLTVModel.NXB" Role="NXB" Multiplicity="1" />
+    <End Type="QLTVModel.DOANHTHU" Role="DOANHTHU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="MANXB" />
+      </Principal>
+      <Dependent Role="DOANHTHU">
+        <PropertyRef Name="MANXB" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

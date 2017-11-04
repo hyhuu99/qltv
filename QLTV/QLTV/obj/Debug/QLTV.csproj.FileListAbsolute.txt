@@ -166,10 +166,10 @@ E:\project\github\qltv\QLTV\QLTV\bin\Microsoft.Owin.Security.MicrosoftAccount.xm
 E:\project\github\qltv\QLTV\QLTV\obj\Debug\QLTV.csproj.CoreCompileInputs.cache
 E:\project\github\qltv\QLTV\QLTV\obj\Debug\QLTV.dll
 E:\project\github\qltv\QLTV\QLTV\obj\Debug\QLTV.pdb
-E:\project\github\qltv\QLTV\QLTV\obj\Debug\QLTV.csprojResolveAssemblyReference.cache
 E:\project\github\qltv\QLTV\QLTV\bin\System.Net.Http.Formatting.dll
 E:\project\github\qltv\QLTV\QLTV\bin\System.Web.Http.dll
 E:\project\github\qltv\QLTV\QLTV\bin\System.Web.Http.WebHost.dll
 E:\project\github\qltv\QLTV\QLTV\bin\System.Net.Http.Formatting.xml
 E:\project\github\qltv\QLTV\QLTV\bin\System.Web.Http.xml
 E:\project\github\qltv\QLTV\QLTV\bin\System.Web.Http.WebHost.xml
+E:\project\github\qltv\QLTV\QLTV\obj\Debug\QLTV.csprojResolveAssemblyReference.cache

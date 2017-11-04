@@ -73,7 +73,7 @@ namespace QLTV.Controllers
             {
                 int mapn = 1;
                 if (db.PHIEUNHAPSACHes.Any())
-                    mapn = db.PHIEUNHAPSACHes.Max(o => o.MAPNS) + 1;
+                    mapn = db.PHIEUNHAPSACHes.Max(o => o.MAPNS) + 1;                
                 foreach(CTPN ct in ctpn)
                 {
                     ct.MAPNS = mapn;
@@ -92,6 +92,8 @@ namespace QLTV.Controllers
                     ct.TONG = ct.SOLUONGN * s.GIANHAP;
                     phieunhaps.THANHTIEN += ct.TONG;                  
                 }
+                NXB nxb = db.NXBs.Find(phieunhaps.MANXB);
+                nxb.SOTIENNO += phieunhaps.THANHTIEN;
                 phieunhaps.CTPNS = ctpn;
                 db.PHIEUNHAPSACHes.Add(phieunhaps);
                 db.SaveChanges();
@@ -109,13 +111,14 @@ namespace QLTV.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUNHAPSACH pHIEUNHAPSACH = db.PHIEUNHAPSACHes.Find(id);
-            if (pHIEUNHAPSACH == null)
+            PHIEUNHAPSACH phieunhaps = db.PHIEUNHAPSACHes.Find(id);
+            phieunhaps.CTPNS = db.CTPNS.Include(s => s.SACH).Where(o => o.MAPNS == id).ToList();
+            if (phieunhaps == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", pHIEUNHAPSACH.MANXB);
-            return View(pHIEUNHAPSACH);
+            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhaps.MANXB);
+            return View(phieunhaps);
         }
 
         // POST: PHIEUNHAPSACHes/Edit/5
