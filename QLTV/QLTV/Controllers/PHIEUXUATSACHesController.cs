@@ -67,17 +67,15 @@ namespace QLTV.Controllers
                     ct.MAPXS = mapx;
                     SACH s = new SACH();
                     s = db.SACHes.Find(ct.MAS);
-                    SLDL sl = new SLDL();                  
+                                     
                     if(s.SOLUONG>ct.SOLUONGN)
                     {
                         s.SOLUONG = s.SOLUONG - ct.SOLUONGN;
                         ct.TONG = ct.SOLUONGN * s.GIABAN;
                         phieuxuats.THANHTIEN += ct.TONG;
-                        sl.MAS = ct.MAS;
-                        sl.MADL = phieuxuats.MADL;
+                        SLDL sl = db.SLDLs.Where(c => c.MAS == ct.MAS && c.MADL == phieuxuats.MADL).FirstOrDefault();
                         sl.SLTON += ct.SOLUONGN;
-                        db.SLDLs.Add(sl);
-                        dl.SOTIENNO += phieuxuats.THANHTIEN;
+                        db.Entry(sl).State = EntityState.Modified;                    
                     }
                     else
                     {
@@ -87,6 +85,8 @@ namespace QLTV.Controllers
                         return View(phieuxuats);
                     }
                 }
+                dl.SOTIENNO += phieuxuats.THANHTIEN;
+                db.Entry(dl).State = EntityState.Modified;
                 phieuxuats.CTPXS = ctpx;
                 db.PHIEUXUATSACHes.Add(phieuxuats);              
                 db.SaveChanges();

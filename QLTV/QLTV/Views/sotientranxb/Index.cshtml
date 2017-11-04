@@ -1,16 +1,15 @@
-﻿@model QLTV.Models.tonkho
+﻿@model QLTV.Models.sotientranxb
 @{
-    ViewBag.Title = "thongketonkho";
+    ViewBag.Title = "Index";
 }
 
-<h2>Thống kê tồn kho</h2>
-@using (Html.BeginForm("Index", "thongketonkho", FormMethod.Get))
+<h2>Số tiền sẽ trả cho nhà xuất bản</h2>
+@using (Html.BeginForm("Index", "sotientranxb", FormMethod.Get))
 {
-
     <div class="form-inline">
-        @Html.Label("Sách")
+        @Html.Label("Nhà xuất bản")
         <div class="form-group">
-            @Html.DropDownList("MAS", null, htmlAttributes: new { @class = "form-control", @id = "item" })
+            @Html.DropDownList("MANXB", null, htmlAttributes: new { @class = "form-control", @id = "item" })
         </div>
         @Html.Label("Ngày ")
         <div class="form-group input-group-sm">
@@ -21,26 +20,31 @@
                 <input type="submit" value="Tìm kiếm" class="btn btn-default" />
             </div>
         </div>
-    </div>
+
+
+
+        </div>
 }
 <table class="table">
     <tr>
-        <th>Ngày</th>
+        <th>@Html.DisplayName("Ngày")</th>
         <th>
-            @Html.DisplayName("Số lượng còn lại")
+            @Html.DisplayName("Tên nhà xuất bản")
+        </th>
+        <th>
+            @Html.DisplayName("Số tiền nợ")
         </th>
     </tr>
-    @foreach (var item in Model.sach)
+    @foreach (var item in Model.nxb)
     {
         <tr>
             <td>@Html.DisplayFor(o => o.dt)</td>
             <td>
-                @Html.DisplayFor(modelItem => item.TENS)
+                @Html.DisplayFor(modelItem => item.TENNXB)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SOLUONG)
+                @Html.DisplayFor(modelItem => item.SOTIENNO)
             </td>
         </tr>
     }
 </table>
-

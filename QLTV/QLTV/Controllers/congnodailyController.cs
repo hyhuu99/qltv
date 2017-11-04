@@ -25,7 +25,7 @@ namespace QLTV.Controllers
                 foreach (DAILY o in dls)
                 {
                     int tonggiaxuat = (int)db.CTPXS.Where(ct => ct.PHIEUXUATSACH.MADL == o.MADL && ct.PHIEUXUATSACH.NGAYXUAT > searchDate)
-                                                  .Select(ct => ct.SOLUONGN * ct.SACH.GIABAN)
+                                                  .Select(ct => ct.TONG)
                                                   .DefaultIfEmpty(0)
                                                   .Sum();
                     int tongsotientra = (int)db.CTPTTs.Where(ct => ct.PHIEUTRATIEN.MADL == o.MADL && ct.PHIEUTRATIEN.NGAY > searchDate)

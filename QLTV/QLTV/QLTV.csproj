@@ -171,10 +171,8 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\congnodailyController.cs" />
     <Compile Include="Controllers\CTPNsController.cs" />
@@ -182,20 +180,22 @@
     <Compile Include="Controllers\DAILiesController.cs" />
     <Compile Include="Controllers\DOANHTHUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NXBsController.cs" />
     <Compile Include="Controllers\PHIEUNHAPSACHesController.cs" />
     <Compile Include="Controllers\PHIEUTRATIENsController.cs" />
     <Compile Include="Controllers\PHIEUXUATSACHesController.cs" />
     <Compile Include="Controllers\SACHesController.cs" />
     <Compile Include="Controllers\SLDLsController.cs" />
+    <Compile Include="Controllers\sotientranxbController.cs" />
     <Compile Include="Controllers\thongketonkhoController.cs" />
+    <Compile Include="Controllers\tkdtController.cs" />
     <Compile Include="Controllers\TKTKsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\congnodaily.cs" />
+    <Compile Include="Models\ctdt.cs" />
     <Compile Include="Models\CTPN.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
@@ -211,8 +211,6 @@
     <Compile Include="Models\DOANHTHU.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NXB.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
@@ -249,12 +247,13 @@
     <Compile Include="Models\SLDL.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sotientranxb.cs" />
+    <Compile Include="Models\tkdt.cs" />
     <Compile Include="Models\TKTK.cs">
       <DependentUpon>QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tonkho.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -350,6 +349,9 @@
       <DependentUpon>QLTV.edmx</DependentUpon>
       <LastGenOutput>QLTV.cs</LastGenOutput>
     </Content>
+    <None Include="ApplicationInsights.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\amplify-vsdoc.js" />
     <Content Include="Scripts\amplify.js" />
     <Content Include="Scripts\amplify.min.js" />
@@ -431,26 +433,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\CTPNs\Create.cshtml" />
     <Content Include="Views\CTPNs\Delete.cshtml" />
     <Content Include="Views\CTPNs\Details.cshtml" />
@@ -486,11 +468,6 @@
     <Content Include="Views\SACHes\Details.cshtml" />
     <Content Include="Views\SACHes\Edit.cshtml" />
     <Content Include="Views\SACHes\Index.cshtml" />
-    <Content Include="Views\TKTKs\Create.cshtml" />
-    <Content Include="Views\TKTKs\Delete.cshtml" />
-    <Content Include="Views\TKTKs\Details.cshtml" />
-    <Content Include="Views\TKTKs\Edit.cshtml" />
-    <Content Include="Views\TKTKs\Index.cshtml" />
     <Content Include="Views\PHIEUTRATIENs\Create.cshtml" />
     <Content Include="Views\PHIEUTRATIENs\Delete.cshtml" />
     <Content Include="Views\PHIEUTRATIENs\Details.cshtml" />
@@ -508,10 +485,12 @@
     <Content Include="Views\DOANHTHUs\Details.cshtml" />
     <Content Include="Views\DOANHTHUs\Edit.cshtml" />
     <Content Include="Views\DOANHTHUs\Index.cshtml" />
+    <Content Include="Views\sotientranxb\Index.cshtml" />
+    <Content Include="Views\tkdt\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\tonkho\" />
+    <Folder Include="Views\ctdt\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

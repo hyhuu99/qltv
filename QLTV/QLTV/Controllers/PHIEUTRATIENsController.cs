@@ -46,9 +46,21 @@ namespace QLTV.Controllers
             PHIEUTRATIEN ptt = db.PHIEUTRATIENs.Find(id);
             ptt.TRANGTHAI = 1;
             db.Entry(ptt).State = EntityState.Modified;
+            List<CTPTT> ctptt = new List<CTPTT>();
+            ctptt = ptt.CTPTTs.ToList();
+            //foreach(CTPTT ct in ctptt)
+            //{
+            //    NXB nxb = db.NXBs.Find(ct.SACH.MANXB);
+            //    nxb.SOTIENNO -= ct.TONG;
+            //    db.Entry(nxb).State = EntityState.Modified;
+               
+            //}
+            DAILY dl = db.DAILies.Find(ptt.MADL);
+            dl.SOTIENNO -= ptt.SOTIENNO;
+            db.Entry(dl).State = EntityState.Modified;
             db.SaveChanges();
             ModelState.AddModelError(" ", "Đã thanh toán thành công");
-            return View();
+            return RedirectToAction("Index");
 
         }
 

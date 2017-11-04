@@ -37,7 +37,7 @@ namespace QLTV.Controllers
                 return View(tktk);
             }
             tktk.sach = db.SACHes.ToList();
-            return View();
+            return View(tktk);
         }
     }
 }
