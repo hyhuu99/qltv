@@ -90,6 +90,7 @@ namespace QLTV.Controllers
                     s = db.SACHes.Find(ct.MAS);
                     s.SOLUONG = s.SOLUONG + ct.SOLUONGN;
                     ct.TONG = ct.SOLUONGN * s.GIANHAP;
+                    db.Entry(s).State = EntityState.Modified;
                     phieunhaps.THANHTIEN += ct.TONG;                  
                 }
                 NXB nxb = db.NXBs.Find(phieunhaps.MANXB);
@@ -112,13 +113,15 @@ namespace QLTV.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PHIEUNHAPSACH phieunhaps = db.PHIEUNHAPSACHes.Find(id);
-            phieunhaps.CTPNS = db.CTPNS.Include(s => s.SACH).Where(o => o.MAPNS == id).ToList();
             if (phieunhaps == null)
             {
                 return HttpNotFound();
             }
+            phieunhap pn = new phieunhap();
+            pn.phieunhaps = phieunhaps;
             ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhaps.MANXB);
-            return View(phieunhaps);
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+            return View(pn);
         }
 
         // POST: PHIEUNHAPSACHes/Edit/5
@@ -126,17 +129,21 @@ namespace QLTV.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MAPNS,MANXB,NGUOIGS,NGAYNHAP,THANHTIEN")] PHIEUNHAPSACH pHIEUNHAPSACH)
+        public ActionResult Edit([Bind(Prefix = "phieunhaps")] PHIEUNHAPSACH phieunhaps,
+                                    [Bind(Prefix = "ct")] CTPN[] ctpn)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHIEUNHAPSACH).State = EntityState.Modified;
+                
+
+
+                db.Entry(phieunhaps).State = EntityState.Modified;
                 db.SaveChanges();
                 
                 return RedirectToAction("Index");
             }
-            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", pHIEUNHAPSACH.MANXB);
-            return View(pHIEUNHAPSACH);
+            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhaps.MANXB);
+            return View(phieunhaps);
         }
 
         // GET: PHIEUNHAPSACHes/Delete/5
