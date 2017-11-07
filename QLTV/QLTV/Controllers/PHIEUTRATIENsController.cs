@@ -126,13 +126,16 @@ namespace QLTV.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUTRATIEN pHIEUTRATIEN = db.PHIEUTRATIENs.Find(id);
-            if (pHIEUTRATIEN == null)
+            PHIEUTRATIEN ptt = db.PHIEUTRATIENs.Find(id);
+            if (ptt == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUTRATIEN.MADL);
-            return View(pHIEUTRATIEN);
+            sachdaban sdb = new sachdaban();
+            sdb.phieutratiens = ptt;
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", ptt.MADL);
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+            return View(sdb);
         }
 
         // POST: PHIEUTRATIENs/Edit/5

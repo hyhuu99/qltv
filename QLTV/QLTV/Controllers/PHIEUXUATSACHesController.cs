@@ -61,13 +61,11 @@ namespace QLTV.Controllers
                     mapx = db.PHIEUXUATSACHes.Max(o => o.MAPXS) + 1;
                 DAILY dl = new DAILY();
                 dl = db.DAILies.Find(phieuxuats.MADL);
-                Debug.Write(" ma phieu xuat:" + mapx);
                 foreach (CTPX ct in ctpx)
                 {
                     ct.MAPXS = mapx;
                     SACH s = new SACH();
-                    s = db.SACHes.Find(ct.MAS);
-                                     
+                    s = db.SACHes.Find(ct.MAS);                                    
                     if(s.SOLUONG>ct.SOLUONGN)
                     {
                         s.SOLUONG = s.SOLUONG - ct.SOLUONGN;
@@ -103,13 +101,16 @@ namespace QLTV.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHIEUXUATSACH pHIEUXUATSACH = db.PHIEUXUATSACHes.Find(id);
-            if (pHIEUXUATSACH == null)
+            PHIEUXUATSACH phieuxuat = db.PHIEUXUATSACHes.Find(id);
+            if (phieuxuat == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUATSACH.MADL);
-            return View(pHIEUXUATSACH);
+            phieuxuat px = new phieuxuat();
+            px.phieuxuats = phieuxuat;
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuat.MADL);
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+            return View(px);
         }
 
         // POST: PHIEUXUATSACHes/Edit/5
@@ -117,16 +118,69 @@ namespace QLTV.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MAPXS,MADL,NGUOINS,NGAYXUAT,THANHTIEN")] PHIEUXUATSACH pHIEUXUATSACH)
+        public ActionResult Edit([Bind(Prefix = "phieuxuats")] PHIEUXUATSACH phieuxuats,
+                                    [Bind(Prefix = "ct")] CTPX[] ctpx)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHIEUXUATSACH).State = EntityState.Modified;
+                phieuxuat px = new phieuxuat();
+                int mapx = phieuxuats.MAPXS;
+                var ctpxcu = db.CTPXS.Where(c => c.MAPXS == phieuxuats.MAPXS);
+                int tongtiencu = 0;
+                // cong lai so luong sach cu da xoa
+                foreach (CTPX ct in ctpxcu)
+                {
+                    tongtiencu += ct.TONG;
+                    SACH s = db.SACHes.Find(ct.MAS);
+                    s.SOLUONG = s.SOLUONG + ct.SOLUONGN;
+                    db.Entry(s).State = EntityState.Modified;
+                    db.CTPXS.Remove(ct);
+                }
+                // add vao database và update so luong dai ly
+                foreach (CTPX ct in ctpx)
+                {
+                    SACH s = db.SACHes.Find(ct.MAS);
+                    if (s.SOLUONG > ct.SOLUONGN)
+                    {
+                        ct.MAPXS = mapx;
+                        ct.TONG = ct.SOLUONGN * s.GIABAN;
+                        SLDL sldl = db.SLDLs.FirstOrDefault(c => c.MAS == ct.MAS && c.MADL == phieuxuats.MADL);
+                        sldl.SLTON += ct.SOLUONGN;
+                        db.Entry(sldl).State = EntityState.Modified;
+                        s.SOLUONG = s.SOLUONG - ct.SOLUONGN;
+                        db.Entry(s).State = EntityState.Modified;
+                        phieuxuats.THANHTIEN += ct.TONG;
+                    }
+                    else
+                    {                     
+                        px.phieuxuats = phieuxuats;
+                        ModelState.AddModelError("", "Số lượng sách hiện có không đủ");
+                        ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuats.MADL);
+                        ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                        return View(px);
+                    }
+                }
+                
+              
+                DAILY dl = db.DAILies.Find(phieuxuats.MADL);
+                dl.SOTIENNO = dl.SOTIENNO - tongtiencu + phieuxuats.THANHTIEN;
+                if (dl.SOTIENNO < 0)
+                {
+                    ModelState.AddModelError("", "Có sách đã bán trong phiếu xuất");
+                    px.phieuxuats = phieuxuats;
+                    return View(px);
+                }
+                foreach(CTPX ct in ctpx)
+                {
+                    db.CTPXS.Add(ct);
+                }
+                db.Entry(phieuxuats).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUXUATSACH.MADL);
-            return View(pHIEUXUATSACH);
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuats.MADL);
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+            return View(phieuxuats);
         }
 
         // GET: PHIEUXUATSACHes/Delete/5

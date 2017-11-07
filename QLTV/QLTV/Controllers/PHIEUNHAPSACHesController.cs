@@ -95,6 +95,7 @@ namespace QLTV.Controllers
                 }
                 NXB nxb = db.NXBs.Find(phieunhaps.MANXB);
                 nxb.SOTIENNO += phieunhaps.THANHTIEN;
+                db.Entry(nxb).State = EntityState.Modified;
                 phieunhaps.CTPNS = ctpn;
                 db.PHIEUNHAPSACHes.Add(phieunhaps);
                 db.SaveChanges();
@@ -134,16 +135,55 @@ namespace QLTV.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-
-
+                int mapn = phieunhaps.MAPNS;
+                foreach(CTPN ct in ctpn)
+                {
+                    ct.MAPNS = mapn;
+                    SACH s = new SACH();
+                    s = db.SACHes.Find(ct.MAS);
+                    s.SOLUONG = s.SOLUONG + ct.SOLUONGN;
+                    ct.TONG = ct.SOLUONGN * s.GIANHAP;
+                    db.Entry(s).State = EntityState.Modified;
+                    phieunhaps.THANHTIEN += ct.TONG;
+                }
+                // xoa data trong db cu
+                var ctpncu = db.CTPNS.Where(o => o.MAPNS == phieunhaps.MAPNS);
+                int sotiennonxb = 0;
+                foreach(var ct in ctpncu)
+                {
+                    SACH s = new SACH();
+                    s = db.SACHes.Find(ct.MAS);
+                    int soluongsach = s.SOLUONG-ct.SOLUONGN;
+                    if(soluongsach<0)
+                    {
+                        phieunhap pnt = new phieunhap();
+                        pnt.phieunhaps = phieunhaps;
+                        ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhaps.MANXB);
+                        ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                        ModelState.AddModelError("", "Số lượng đã bị lỗi");
+                        return View(pnt);
+                    }            
+                    s.SOLUONG = soluongsach;
+                    sotiennonxb += ct.TONG;
+                    db.CTPNS.Remove(ct);
+                }
+                foreach(CTPN ct in ctpn)
+                {
+                    db.CTPNS.Add(ct);
+                }
+                NXB nxb = db.NXBs.Find(phieunhaps.MANXB);
+                nxb.SOTIENNO = nxb.SOTIENNO+phieunhaps.THANHTIEN-sotiennonxb;
+                db.Entry(nxb).State = EntityState.Modified;  
                 db.Entry(phieunhaps).State = EntityState.Modified;
-                db.SaveChanges();
-                
+                db.SaveChanges();              
                 return RedirectToAction("Index");
             }
+            phieunhap pn = new phieunhap();
+            pn.phieunhaps = phieunhaps;
             ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhaps.MANXB);
-            return View(phieunhaps);
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+            ModelState.AddModelError("", "Số lượng đã bị lỗi");
+            return View(pn);
         }
 
         // GET: PHIEUNHAPSACHes/Delete/5

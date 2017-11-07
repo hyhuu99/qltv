@@ -15,6 +15,9 @@
         <h4>Phiếu nhập sách</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.phieunhaps.MAPNS);
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.phieunhaps.MANXB, "Mã nhà xuất bản", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -76,6 +79,7 @@
                         @Html.Hidden("ct.Index", ct.MAPNS)
                         @Html.Hidden("ct[" + ct.MAPNS + "].MAS", ct.MAS)
                         @Html.Hidden("ct[" + ct.MAPNS + "].SOLUONGN", ct.SOLUONGN)
+                    
                     </tr>
                 }
             }            
@@ -90,7 +94,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

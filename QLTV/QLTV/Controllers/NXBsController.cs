@@ -78,7 +78,7 @@ namespace QLTV.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MANXB,TENNXB,DIACHI,SDT,STK,SOTIENNO")] NXB nXB)
+        public ActionResult Edit([Bind(Include = "MANXB,TENNXB,DIACHI,SDT,STK")] NXB nXB)
         {
             if (ModelState.IsValid)
             {

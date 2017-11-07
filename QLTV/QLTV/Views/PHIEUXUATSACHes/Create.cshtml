@@ -64,22 +64,7 @@
                 <td>Số lượng xuất</td>
                 <td></td>
             </tr>
-            @*@if (Model != null)
-            {
-                foreach (var ct in Model.phieunhaps.CTPNS)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => ct.MAPNS)</td>
-                        <td>@Html.DisplayFor(modelItem => ct.MAS)</td>
-                        <td>@Html.DisplayFor(modelItem => ct.SACH.MAS)</td>
-                        <td>@Html.DisplayFor(modelItem => ct.soluong)</td>
-                        <td><button class="btn btn-danger btnDelete">Delete</button></td>
-                        @Html.Hidden("ct.Index", ct.idctpn)
-                        @Html.Hidden("ct[" + ct.idctpn + "].idsach", ct.idsach)
-                        @Html.Hidden("ct[" + ct.idctpn + "].soluong", ct.soluong)
-                    </tr>
-                }
-            }*@
+            
         </table>
         <hr />
         <div class="form-group">
