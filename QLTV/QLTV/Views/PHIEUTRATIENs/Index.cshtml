@@ -49,8 +49,11 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.MATK }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MATK }) |
-            @Html.ActionLink("Thanh toán", "thanhtoan", new { id = item.MATK }) 
+            @Html.ActionLink("Details", "Details", new { id=item.MATK }) 
+            @if (item.TRANGTHAI == 0)
+            {
+               @Html.ActionLink("| Thanh toán", "thanhtoan", new { id = item.MATK })
+            }            
         </td>
     </tr>
 }

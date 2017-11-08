@@ -24,6 +24,7 @@ namespace QLTV.Controllers
                               .Include(o => o.PHIEUTRATIEN)
                               .Include(o => o.SACH)
                               .Where(o => o.PHIEUTRATIEN.NGAY > start && o.PHIEUTRATIEN.NGAY < end)
+                              .AsEnumerable()
                               .Select(c => new ctdt(c)).ToList();
                 dtvm.doanhthu = tinhdoanhthu(dtvm.ctdt);
                 return View(dtvm);

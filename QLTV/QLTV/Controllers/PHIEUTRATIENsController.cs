@@ -15,6 +15,8 @@ namespace QLTV.Controllers
     {
         private QLTVEntities db = new QLTVEntities();
 
+        public object MessageBox { get; private set; }
+
         // GET: PHIEUTRATIENs
         public ActionResult Index()
         {
@@ -138,21 +140,69 @@ namespace QLTV.Controllers
             return View(sdb);
         }
 
-        // POST: PHIEUTRATIENs/Edit/5
+        // POST: PHIEUTRATIENs/Ed it/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MATK,MAPXS,MADL,NGAY,SOTIENTRA,SOTIENNO,TRANGTHAI")] PHIEUTRATIEN pHIEUTRATIEN)
+        public ActionResult Edit([Bind(Prefix = "phieutratiens")] PHIEUTRATIEN ptt,
+                                    [Bind(Prefix = "ct")] CTPTT[] ctpt)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHIEUTRATIEN).State = EntityState.Modified;
+                
+                sachdaban sdb = new sachdaban();
+                if (ptt.TRANGTHAI == 1)
+                {
+
+                    return RedirectToAction("Index");
+                }
+                int maptt = ptt.MATK;
+                var ctpttcu = db.CTPTTs.Where(c => c.MATK == ptt.MATK);
+                // cong lai sldl va update so tien no ve 0
+                foreach(CTPTT ct in ctpttcu)
+                {
+                    SLDL sl = db.SLDLs.FirstOrDefault(o => ct.MAS == o.MAS&&o.MADL==ptt.MADL);
+                    sl.SLTON = sl.SLTON + ct.SOLUONGN;
+                    db.Entry(sl).State = EntityState.Modified;
+                    db.CTPTTs.Remove(ct);
+                   
+                }
+                ptt.SOTIENNO = 0;
+                // cong ctptt moi
+                foreach(CTPTT ct in ctpt)
+                {
+                    ct.MATK =maptt;
+                    SLDL sl = db.SLDLs.FirstOrDefault(o => ct.MAS == o.MAS && o.MADL == ptt.MADL);
+                    SACH s = db.SACHes.Find(ct.MAS);
+                    if (sl != null && sl.SLTON > 0)
+                    {
+                        ct.TONG = ct.SOLUONGN * s.GIABAN;
+                        sl.SLTON -= ct.SOLUONGN;
+                        ptt.SOTIENNO += ct.TONG;
+                        db.Entry(sl).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", ptt.MADL);
+                        ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                        ModelState.AddModelError("", "số sách đã bán lớn hơn số sách xuất cho đại lý");
+                        sdb.phieutratiens = ptt;
+                        return View(sdb);
+                    }
+                }
+                foreach(CTPTT ct in ctpt)
+                {
+                    db.CTPTTs.Add(ct);
+                }
+
+                db.Entry(ptt).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", pHIEUTRATIEN.MADL);
-            return View(pHIEUTRATIEN);
+            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", ptt.MADL);
+            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+            return View(ptt);
         }
 
         // GET: PHIEUTRATIENs/Delete/5
