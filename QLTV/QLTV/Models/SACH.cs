@@ -18,10 +18,10 @@ namespace QLTV.Models
         public SACH()
         {
             this.CTPNS = new HashSet<CTPN>();
+            this.CTPTTs = new HashSet<CTPTT>();
             this.CTPXS = new HashSet<CTPX>();
             this.SLDLs = new HashSet<SLDL>();
             this.TKTKs = new HashSet<TKTK>();
-            this.CTPTTs = new HashSet<CTPTT>();
         }
     
         public string MAS { get; set; }
@@ -36,13 +36,13 @@ namespace QLTV.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPN> CTPNS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTPTT> CTPTTs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPX> CTPXS { get; set; }
         public virtual NXB NXB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SLDL> SLDLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TKTK> TKTKs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTPTT> CTPTTs { get; set; }
     }
 }

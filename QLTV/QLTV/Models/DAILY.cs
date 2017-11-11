@@ -20,6 +20,7 @@ namespace QLTV.Models
             this.PHIEUTRATIENs = new HashSet<PHIEUTRATIEN>();
             this.PHIEUXUATSACHes = new HashSet<PHIEUXUATSACH>();
             this.SLDLs = new HashSet<SLDL>();
+            this.SLDLs1 = new HashSet<SLDL>();
         }
     
         public string MADL { get; set; }
@@ -34,5 +35,7 @@ namespace QLTV.Models
         public virtual ICollection<PHIEUXUATSACH> PHIEUXUATSACHes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SLDL> SLDLs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SLDL> SLDLs1 { get; set; }
     }
 }

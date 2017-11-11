@@ -11,6 +11,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CTPTTs">
+      <EntityTypeMapping TypeName="QLTVModel.CTPTT">
+        <MappingFragment StoreEntitySet="CTPTT">
+          <ScalarProperty Name="TONG" ColumnName="TONG" />
+          <ScalarProperty Name="SOLUONGN" ColumnName="SOLUONGN" />
+          <ScalarProperty Name="MAS" ColumnName="MAS" />
+          <ScalarProperty Name="MATK" ColumnName="MATK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CTPXS">
       <EntityTypeMapping TypeName="QLTVModel.CTPX">
         <MappingFragment StoreEntitySet="CTPXS">
@@ -29,6 +39,16 @@
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="TENDL" ColumnName="TENDL" />
           <ScalarProperty Name="MADL" ColumnName="MADL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOANHTHUs">
+      <EntityTypeMapping TypeName="QLTVModel.DOANHTHU">
+        <MappingFragment StoreEntitySet="DOANHTHU">
+          <ScalarProperty Name="SOTIENNXB" ColumnName="SOTIENNXB" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="MADT" ColumnName="MADT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -107,26 +127,6 @@
           <ScalarProperty Name="NGAY" ColumnName="NGAY" />
           <ScalarProperty Name="MAS" ColumnName="MAS" />
           <ScalarProperty Name="MAKHO" ColumnName="MAKHO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CTPTTs">
-      <EntityTypeMapping TypeName="QLTVModel.CTPTT">
-        <MappingFragment StoreEntitySet="CTPTT">
-          <ScalarProperty Name="TONG" ColumnName="TONG" />
-          <ScalarProperty Name="SOLUONGN" ColumnName="SOLUONGN" />
-          <ScalarProperty Name="MAS" ColumnName="MAS" />
-          <ScalarProperty Name="MATK" ColumnName="MATK" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DOANHTHUs">
-      <EntityTypeMapping TypeName="QLTVModel.DOANHTHU">
-        <MappingFragment StoreEntitySet="DOANHTHU">
-          <ScalarProperty Name="SOTIENNXB" ColumnName="SOTIENNXB" />
-          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
-          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
-          <ScalarProperty Name="MADT" ColumnName="MADT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

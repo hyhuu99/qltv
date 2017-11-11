@@ -175,8 +175,6 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\congnodailyController.cs" />
-    <Compile Include="Controllers\CTPNsController.cs" />
-    <Compile Include="Controllers\CTPXesController.cs" />
     <Compile Include="Controllers\DAILiesController.cs" />
     <Compile Include="Controllers\DOANHTHUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -433,16 +431,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\CTPNs\Create.cshtml" />
-    <Content Include="Views\CTPNs\Delete.cshtml" />
-    <Content Include="Views\CTPNs\Details.cshtml" />
-    <Content Include="Views\CTPNs\Edit.cshtml" />
-    <Content Include="Views\CTPNs\Index.cshtml" />
-    <Content Include="Views\CTPXes\Create.cshtml" />
-    <Content Include="Views\CTPXes\Delete.cshtml" />
-    <Content Include="Views\CTPXes\Details.cshtml" />
-    <Content Include="Views\CTPXes\Edit.cshtml" />
-    <Content Include="Views\CTPXes\Index.cshtml" />
     <Content Include="Views\DAILies\Create.cshtml" />
     <Content Include="Views\DAILies\Delete.cshtml" />
     <Content Include="Views\DAILies\Details.cshtml" />

@@ -121,7 +121,7 @@
     <Property Name="NGAY" Type="datetime" Nullable="false" />
     <Property Name="SLTON" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__CTPNS__MAPNS__276EDEB3">
+  <Association Name="FK__CTPNS__MAPNS__25869641">
     <End Role="PHIEUNHAPSACH" Type="Self.PHIEUNHAPSACH" Multiplicity="1" />
     <End Role="CTPNS" Type="Self.CTPNS" Multiplicity="*" />
     <ReferentialConstraint>
@@ -133,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPNS__MAS__286302EC">
+  <Association Name="FK__CTPNS__MAS__267ABA7A">
     <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
     <End Role="CTPNS" Type="Self.CTPNS" Multiplicity="*" />
     <ReferentialConstraint>
@@ -145,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPTT__MAS__3E52440B">
+  <Association Name="FK__CTPTT__MAS__276EDEB3">
     <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
     <End Role="CTPTT" Type="Self.CTPTT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -157,7 +157,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPTT__MATK__403A8C7D">
+  <Association Name="FK__CTPTT__MATK__286302EC">
     <End Role="PHIEUTRATIEN" Type="Self.PHIEUTRATIEN" Multiplicity="1" />
     <End Role="CTPTT" Type="Self.CTPTT" Multiplicity="*" />
     <ReferentialConstraint>
@@ -169,7 +169,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPXS__MAPXS__2A4B4B5E">
+  <Association Name="FK__CTPXS__MAPXS__29572725">
     <End Role="PHIEUXUATSACH" Type="Self.PHIEUXUATSACH" Multiplicity="1" />
     <End Role="CTPXS" Type="Self.CTPXS" Multiplicity="*" />
     <ReferentialConstraint>
@@ -181,7 +181,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTPXS__MAS__2B3F6F97">
+  <Association Name="FK__CTPXS__MAS__2A4B4B5E">
     <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
     <End Role="CTPXS" Type="Self.CTPXS" Multiplicity="*" />
     <ReferentialConstraint>
@@ -193,7 +193,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__DOANHTHU__MANXB__4316F928">
+  <Association Name="FK__DOANHTHU__MANXB__2B3F6F97">
     <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
     <End Role="DOANHTHU" Type="Self.DOANHTHU" Multiplicity="*" />
     <ReferentialConstraint>
@@ -205,7 +205,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUNHAP__MANXB__267ABA7A">
+  <Association Name="FK__PHIEUNHAP__MANXB__2C3393D0">
     <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
     <End Role="PHIEUNHAPSACH" Type="Self.PHIEUNHAPSACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -217,7 +217,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUTRATI__MADL__2C3393D0">
+  <Association Name="FK__PHIEUTRATI__MADL__2D27B809">
     <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
     <End Role="PHIEUTRATIEN" Type="Self.PHIEUTRATIEN" Multiplicity="*" />
     <ReferentialConstraint>
@@ -229,7 +229,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PHIEUXUATS__MADL__29572725">
+  <Association Name="FK__PHIEUXUATS__MADL__2E1BDC42">
     <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
     <End Role="PHIEUXUATSACH" Type="Self.PHIEUXUATSACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -241,7 +241,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SACH__MANXB__25869641">
+  <Association Name="FK__SACH__MANXB__2F10007B">
     <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
     <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -253,7 +253,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SLDL__MADL__2E1BDC42">
+  <Association Name="FK__SLDL__MADL__300424B4">
     <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
     <End Role="SLDL" Type="Self.SLDL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -265,7 +265,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SLDL__MADL__3F466844">
+  <Association Name="FK__SLDL__MADL__30F848ED">
     <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
     <End Role="SLDL" Type="Self.SLDL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -277,7 +277,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SLDL__MAS__2F10007B">
+  <Association Name="FK__SLDL__MAS__31EC6D26">
     <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
     <End Role="SLDL" Type="Self.SLDL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -289,7 +289,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TKTK__MAS__300424B4">
+  <Association Name="FK__TKTK__MAS__32E0915F">
     <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
     <End Role="TKTK" Type="Self.TKTK" Multiplicity="*" />
     <ReferentialConstraint>
@@ -314,63 +314,63 @@
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SLDL" EntityType="Self.SLDL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TKTK" EntityType="Self.TKTK" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__CTPNS__MAPNS__276EDEB3" Association="Self.FK__CTPNS__MAPNS__276EDEB3">
+    <AssociationSet Name="FK__CTPNS__MAPNS__25869641" Association="Self.FK__CTPNS__MAPNS__25869641">
       <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACH" />
       <End Role="CTPNS" EntitySet="CTPNS" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPNS__MAS__286302EC" Association="Self.FK__CTPNS__MAS__286302EC">
+    <AssociationSet Name="FK__CTPNS__MAS__267ABA7A" Association="Self.FK__CTPNS__MAS__267ABA7A">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="CTPNS" EntitySet="CTPNS" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPTT__MAS__3E52440B" Association="Self.FK__CTPTT__MAS__3E52440B">
+    <AssociationSet Name="FK__CTPTT__MAS__276EDEB3" Association="Self.FK__CTPTT__MAS__276EDEB3">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="CTPTT" EntitySet="CTPTT" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPTT__MATK__403A8C7D" Association="Self.FK__CTPTT__MATK__403A8C7D">
+    <AssociationSet Name="FK__CTPTT__MATK__286302EC" Association="Self.FK__CTPTT__MATK__286302EC">
       <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIEN" />
       <End Role="CTPTT" EntitySet="CTPTT" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPXS__MAPXS__2A4B4B5E" Association="Self.FK__CTPXS__MAPXS__2A4B4B5E">
+    <AssociationSet Name="FK__CTPXS__MAPXS__29572725" Association="Self.FK__CTPXS__MAPXS__29572725">
       <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACH" />
       <End Role="CTPXS" EntitySet="CTPXS" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTPXS__MAS__2B3F6F97" Association="Self.FK__CTPXS__MAS__2B3F6F97">
+    <AssociationSet Name="FK__CTPXS__MAS__2A4B4B5E" Association="Self.FK__CTPXS__MAS__2A4B4B5E">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="CTPXS" EntitySet="CTPXS" />
     </AssociationSet>
-    <AssociationSet Name="FK__DOANHTHU__MANXB__4316F928" Association="Self.FK__DOANHTHU__MANXB__4316F928">
+    <AssociationSet Name="FK__DOANHTHU__MANXB__2B3F6F97" Association="Self.FK__DOANHTHU__MANXB__2B3F6F97">
       <End Role="NXB" EntitySet="NXB" />
       <End Role="DOANHTHU" EntitySet="DOANHTHU" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUNHAP__MANXB__267ABA7A" Association="Self.FK__PHIEUNHAP__MANXB__267ABA7A">
+    <AssociationSet Name="FK__PHIEUNHAP__MANXB__2C3393D0" Association="Self.FK__PHIEUNHAP__MANXB__2C3393D0">
       <End Role="NXB" EntitySet="NXB" />
       <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACH" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUTRATI__MADL__2C3393D0" Association="Self.FK__PHIEUTRATI__MADL__2C3393D0">
+    <AssociationSet Name="FK__PHIEUTRATI__MADL__2D27B809" Association="Self.FK__PHIEUTRATI__MADL__2D27B809">
       <End Role="DAILY" EntitySet="DAILY" />
       <End Role="PHIEUTRATIEN" EntitySet="PHIEUTRATIEN" />
     </AssociationSet>
-    <AssociationSet Name="FK__PHIEUXUATS__MADL__29572725" Association="Self.FK__PHIEUXUATS__MADL__29572725">
+    <AssociationSet Name="FK__PHIEUXUATS__MADL__2E1BDC42" Association="Self.FK__PHIEUXUATS__MADL__2E1BDC42">
       <End Role="DAILY" EntitySet="DAILY" />
       <End Role="PHIEUXUATSACH" EntitySet="PHIEUXUATSACH" />
     </AssociationSet>
-    <AssociationSet Name="FK__SACH__MANXB__25869641" Association="Self.FK__SACH__MANXB__25869641">
+    <AssociationSet Name="FK__SACH__MANXB__2F10007B" Association="Self.FK__SACH__MANXB__2F10007B">
       <End Role="NXB" EntitySet="NXB" />
       <End Role="SACH" EntitySet="SACH" />
     </AssociationSet>
-    <AssociationSet Name="FK__SLDL__MADL__2E1BDC42" Association="Self.FK__SLDL__MADL__2E1BDC42">
+    <AssociationSet Name="FK__SLDL__MADL__300424B4" Association="Self.FK__SLDL__MADL__300424B4">
       <End Role="DAILY" EntitySet="DAILY" />
       <End Role="SLDL" EntitySet="SLDL" />
     </AssociationSet>
-    <AssociationSet Name="FK__SLDL__MADL__3F466844" Association="Self.FK__SLDL__MADL__3F466844">
+    <AssociationSet Name="FK__SLDL__MADL__30F848ED" Association="Self.FK__SLDL__MADL__30F848ED">
       <End Role="DAILY" EntitySet="DAILY" />
       <End Role="SLDL" EntitySet="SLDL" />
     </AssociationSet>
-    <AssociationSet Name="FK__SLDL__MAS__2F10007B" Association="Self.FK__SLDL__MAS__2F10007B">
+    <AssociationSet Name="FK__SLDL__MAS__31EC6D26" Association="Self.FK__SLDL__MAS__31EC6D26">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="SLDL" EntitySet="SLDL" />
     </AssociationSet>
-    <AssociationSet Name="FK__TKTK__MAS__300424B4" Association="Self.FK__TKTK__MAS__300424B4">
+    <AssociationSet Name="FK__TKTK__MAS__32E0915F" Association="Self.FK__TKTK__MAS__32E0915F">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="TKTK" EntitySet="TKTK" />
     </AssociationSet>

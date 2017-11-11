@@ -61,8 +61,20 @@ namespace QLTV.Controllers
                     mapx = db.PHIEUXUATSACHes.Max(o => o.MAPXS) + 1;
                 DAILY dl = new DAILY();
                 dl = db.DAILies.Find(phieuxuats.MADL);
+                int valueloop = 1;
                 foreach (CTPX ct in ctpx)
                 {
+                    for (int i = valueloop; i < ctpx.Length; i++)
+                    {
+                        if (ctpx[i].MAS == ct.MAS)
+                        {
+                            phieuxuats.CTPXS = ctpx;
+                            ModelState.AddModelError("", "Vui lòng không nhập trùng tên sách");
+                            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuats.MADL);
+                            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                            return View();
+                        }
+                    }
                     ct.MAPXS = mapx;
                     SACH s = new SACH();
                     s = db.SACHes.Find(ct.MAS);                                    
@@ -72,11 +84,23 @@ namespace QLTV.Controllers
                         ct.TONG = ct.SOLUONGN * s.GIABAN;
                         phieuxuats.THANHTIEN += ct.TONG;
                         SLDL sl = db.SLDLs.Where(c => c.MAS == ct.MAS && c.MADL == phieuxuats.MADL).FirstOrDefault();
-                        sl.SLTON += ct.SOLUONGN;
-                        db.Entry(sl).State = EntityState.Modified;                    
+                        if (sl != null && sl.SLTON != null)
+                        {
+                            sl.SLTON += ct.SOLUONGN;
+                        }
+                        else
+                        {
+                            SLDL slt = new SLDL();
+                            slt.MADL = phieuxuats.MADL;
+                            slt.MAS = ct.MAS;
+                            slt.SLTON = ct.SOLUONGN;
+                            db.SLDLs.Add(slt);
+                        }
+                        valueloop++;
                     }
                     else
                     {
+                        phieuxuats.CTPXS = ctpx;
                         ModelState.AddModelError("", "Số lượng sách hiện có không đủ");
                         ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", phieuxuats.MADL);
                         ViewBag.MANXB = new SelectList(db.NXBs, "MADL", "TENDL", phieuxuats.MADL);

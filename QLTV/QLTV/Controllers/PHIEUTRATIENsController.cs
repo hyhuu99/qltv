@@ -50,13 +50,6 @@ namespace QLTV.Controllers
             db.Entry(ptt).State = EntityState.Modified;
             List<CTPTT> ctptt = new List<CTPTT>();
             ctptt = ptt.CTPTTs.ToList();
-            //foreach(CTPTT ct in ctptt)
-            //{
-            //    NXB nxb = db.NXBs.Find(ct.SACH.MANXB);
-            //    nxb.SOTIENNO -= ct.TONG;
-            //    db.Entry(nxb).State = EntityState.Modified;
-               
-            //}
             DAILY dl = db.DAILies.Find(ptt.MADL);
             dl.SOTIENNO -= ptt.SOTIENNO;
             db.Entry(dl).State = EntityState.Modified;
@@ -89,8 +82,20 @@ namespace QLTV.Controllers
                 if (db.PHIEUTRATIENs.Any())
                     maptt = db.PHIEUTRATIENs.Max(o => o.MATK) + 1;
                 Debug.WriteLine(ctptt.Length);
+                int valueloop = 1;
                 foreach(CTPTT ct in ctptt)
                 {
+                    for (int i = valueloop; i < ctptt.Length; i++)
+                    {
+                        if (ctptt[i].MAS == ct.MAS)
+                        {
+                            ptt.CTPTTs = ctptt;
+                            ModelState.AddModelError("", "Vui lòng không nhập trùng tên sách");
+                            ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL", ptt.MADL);
+                            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                            return View(ptt);
+                        }
+                    }
                     ct.MATK = maptt;
                     SLDL sl = db.SLDLs.FirstOrDefault(o => o.MADL == ptt.MADL && o.MAS == ct.MAS);
                     SACH s = new SACH();
@@ -101,13 +106,15 @@ namespace QLTV.Controllers
                         db.Entry(sl).State = EntityState.Modified;
                         ct.TONG = ct.SOLUONGN * s.GIABAN;
                         ptt.SOTIENNO += ct.TONG;
+                        valueloop++;
                     }
                     else
                     {
+                        ptt.CTPTTs = ctptt;
                         ViewBag.MADL = new SelectList(db.DAILies, "MADL", "TENDL");
                         ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
                         ModelState.AddModelError("", "số sách đã bán lớn hơn số sách xuất cho đại lý");
-                        return View();
+                        return View(ptt);
                     }
                 }
                 ptt.CTPTTs = ctptt;

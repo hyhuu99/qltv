@@ -73,25 +73,32 @@ namespace QLTV.Controllers
             {
                 int mapn = 1;
                 if (db.PHIEUNHAPSACHes.Any())
-                    mapn = db.PHIEUNHAPSACHes.Max(o => o.MAPNS) + 1;                
+                    mapn = db.PHIEUNHAPSACHes.Max(o => o.MAPNS) + 1;
+
+                int valueloop = 1;              
                 foreach(CTPN ct in ctpn)
                 {
                     ct.MAPNS = mapn;
-                    //TKTK tk = new TKTK();
-                    //tk.NGAY = DateTime.Now;                  
-                    //TKTK tktk = db.TKTKs.OrderByDescending(o => o.MAKHO).FirstOrDefault(o => o.MAS == ct.MAS);
-                    //if (tktk != null)
-                    //{
-                    //    tk.MAS = ct.MAS;
-                    //    tk.SLTON = tk.SLTON + ct.SOLUONGN;
-                    //}
-                    //db.TKTKs.Add(tk);
-                    SACH s = new SACH();
-                    s = db.SACHes.Find(ct.MAS);
-                    s.SOLUONG = s.SOLUONG + ct.SOLUONGN;
-                    ct.TONG = ct.SOLUONGN * s.GIANHAP;
-                    db.Entry(s).State = EntityState.Modified;
-                    phieunhaps.THANHTIEN += ct.TONG;                  
+                    for(int i= valueloop; i<ctpn.Length;i++)
+                    {
+                        if (ctpn[i].MAS == ct.MAS)
+                        {
+                            phieunhaps.CTPNS = ctpn;
+                            ModelState.AddModelError("", "Vui lòng không nhập trùng tên sách");
+                            ViewBag.MANXB = new SelectList(db.NXBs, "MANXB", "TENNXB", phieunhaps.MANXB);
+                            ViewBag.MAS = new SelectList(db.SACHes, "MAS", "TENS");
+                            return View();
+                        }
+                    }
+                        SACH s = new SACH();
+                        s = db.SACHes.Find(ct.MAS);
+                        s.SOLUONG = s.SOLUONG + ct.SOLUONGN;
+                        ct.TONG = ct.SOLUONGN * s.GIANHAP;
+                        db.Entry(s).State = EntityState.Modified;
+                        phieunhaps.THANHTIEN += ct.TONG;
+                        valueloop++;        
+
+
                 }
                 NXB nxb = db.NXBs.Find(phieunhaps.MANXB);
                 nxb.SOTIENNO += phieunhaps.THANHTIEN;

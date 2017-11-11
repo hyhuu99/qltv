@@ -17,9 +17,9 @@ namespace QLTV.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NXB()
         {
+            this.DOANHTHUs = new HashSet<DOANHTHU>();
             this.PHIEUNHAPSACHes = new HashSet<PHIEUNHAPSACH>();
             this.SACHes = new HashSet<SACH>();
-            this.DOANHTHUs = new HashSet<DOANHTHU>();
         }
     
         public string MANXB { get; set; }
@@ -30,10 +30,10 @@ namespace QLTV.Models
         public Nullable<int> SOTIENNO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOANHTHU> DOANHTHUs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUNHAPSACH> PHIEUNHAPSACHes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SACH> SACHes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DOANHTHU> DOANHTHUs { get; set; }
     }
 }

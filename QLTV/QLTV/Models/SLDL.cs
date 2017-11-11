@@ -19,6 +19,7 @@ namespace QLTV.Models
         public int SLTON { get; set; }
     
         public virtual DAILY DAILY { get; set; }
+        public virtual DAILY DAILY1 { get; set; }
         public virtual SACH SACH { get; set; }
     }
 }

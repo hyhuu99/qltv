@@ -26,8 +26,10 @@ namespace QLTV.Models
         }
     
         public virtual DbSet<CTPN> CTPNS { get; set; }
+        public virtual DbSet<CTPTT> CTPTTs { get; set; }
         public virtual DbSet<CTPX> CTPXS { get; set; }
         public virtual DbSet<DAILY> DAILies { get; set; }
+        public virtual DbSet<DOANHTHU> DOANHTHUs { get; set; }
         public virtual DbSet<NXB> NXBs { get; set; }
         public virtual DbSet<PHIEUNHAPSACH> PHIEUNHAPSACHes { get; set; }
         public virtual DbSet<PHIEUTRATIEN> PHIEUTRATIENs { get; set; }
@@ -35,7 +37,5 @@ namespace QLTV.Models
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<SLDL> SLDLs { get; set; }
         public virtual DbSet<TKTK> TKTKs { get; set; }
-        public virtual DbSet<CTPTT> CTPTTs { get; set; }
-        public virtual DbSet<DOANHTHU> DOANHTHUs { get; set; }
     }
 }
