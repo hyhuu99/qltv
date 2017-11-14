@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="CTPNS">
     <Key>
       <PropertyRef Name="MAPNS" />
@@ -302,18 +302,18 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="QLTVModelStoreContainer">
-    <EntitySet Name="CTPNS" EntityType="Self.CTPNS" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CTPTT" EntityType="Self.CTPTT" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CTPXS" EntityType="Self.CTPXS" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DAILY" EntityType="Self.DAILY" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DOANHTHU" EntityType="Self.DOANHTHU" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="NXB" EntityType="Self.NXB" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PHIEUNHAPSACH" EntityType="Self.PHIEUNHAPSACH" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PHIEUTRATIEN" EntityType="Self.PHIEUTRATIEN" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PHIEUXUATSACH" EntityType="Self.PHIEUXUATSACH" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SLDL" EntityType="Self.SLDL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TKTK" EntityType="Self.TKTK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTPNS" EntityType="Self.CTPNS" store:Type="Tables" />
+    <EntitySet Name="CTPTT" EntityType="Self.CTPTT" store:Type="Tables" />
+    <EntitySet Name="CTPXS" EntityType="Self.CTPXS" store:Type="Tables" />
+    <EntitySet Name="DAILY" EntityType="Self.DAILY" store:Type="Tables" />
+    <EntitySet Name="DOANHTHU" EntityType="Self.DOANHTHU" store:Type="Tables" />
+    <EntitySet Name="NXB" EntityType="Self.NXB" store:Type="Tables" />
+    <EntitySet Name="PHIEUNHAPSACH" EntityType="Self.PHIEUNHAPSACH" store:Type="Tables" />
+    <EntitySet Name="PHIEUTRATIEN" EntityType="Self.PHIEUTRATIEN" store:Type="Tables" />
+    <EntitySet Name="PHIEUXUATSACH" EntityType="Self.PHIEUXUATSACH" store:Type="Tables" />
+    <EntitySet Name="SACH" EntityType="Self.SACH" store:Type="Tables" />
+    <EntitySet Name="SLDL" EntityType="Self.SLDL" store:Type="Tables" />
+    <EntitySet Name="TKTK" EntityType="Self.TKTK" store:Type="Tables" />
     <AssociationSet Name="FK__CTPNS__MAPNS__25869641" Association="Self.FK__CTPNS__MAPNS__25869641">
       <End Role="PHIEUNHAPSACH" EntitySet="PHIEUNHAPSACH" />
       <End Role="CTPNS" EntitySet="CTPNS" />
