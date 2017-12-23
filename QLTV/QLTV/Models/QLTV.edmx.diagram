@@ -7,7 +7,7 @@
       <Diagram DiagramId="64f39c324ebc4c2686345bc80756e1ef" Name="Diagram1">
         <AssociationConnector Association="QLTVModel.FK__PHIEUTRATI__MATK__2D27B809" />
         <EntityTypeShape EntityType="QLTVModel.CTPN" Width="1.5" PointX="5.25" PointY="11.875" />
-        <EntityTypeShape EntityType="QLTVModel.CTPTT" Width="1.5" PointX="5.25" PointY="6" />
+        <EntityTypeShape EntityType="QLTVModel.CTPTT" Width="1.5" PointX="9" PointY="5.625" />
         <EntityTypeShape EntityType="QLTVModel.CTPX" Width="1.5" PointX="5.25" PointY="3" />
         <EntityTypeShape EntityType="QLTVModel.DAILY" Width="1.5" PointX="0.75" PointY="1.625" />
         <EntityTypeShape EntityType="QLTVModel.DOANHTHU" Width="1.5" PointX="3" PointY="9.625" />
